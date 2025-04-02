@@ -11,11 +11,21 @@ interface VisaCardProps {
   icon: React.ReactNode;
   link: string;
   color?: string;
+  imageSrc?: string;
 }
 
-const VisaCard = ({ title, description, icon, link, color = "bg-card" }: VisaCardProps) => {
+const VisaCard = ({ title, description, icon, link, color = "bg-card", imageSrc }: VisaCardProps) => {
   return (
     <Card className={`card-hover ${color} border-none overflow-hidden`}>
+      {imageSrc && (
+        <div className="relative h-40 overflow-hidden">
+          <img 
+            src={imageSrc} 
+            alt={title}
+            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+          />
+        </div>
+      )}
       <CardHeader className="pb-2">
         <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
           {icon}

@@ -6,11 +6,21 @@ interface FeatureCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
+  imageSrc?: string;
 }
 
-const FeatureCard = ({ title, description, icon }: FeatureCardProps) => {
+const FeatureCard = ({ title, description, icon, imageSrc }: FeatureCardProps) => {
   return (
-    <Card className="card-hover h-full">
+    <Card className="card-hover h-full overflow-hidden">
+      {imageSrc && (
+        <div className="relative h-40 overflow-hidden">
+          <img 
+            src={imageSrc} 
+            alt={title}
+            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+          />
+        </div>
+      )}
       <CardHeader>
         <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
           {icon}

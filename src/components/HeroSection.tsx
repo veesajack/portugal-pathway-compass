@@ -7,7 +7,11 @@ import { ArrowRight } from 'lucide-react';
 const HeroSection = () => {
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-portugal-blue-dark to-portugal-blue opacity-95"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-portugal-blue-dark to-portugal-blue opacity-90"></div>
+      <div 
+        className="absolute inset-0 bg-[url('/hero-bg.jpg')] bg-cover bg-center"
+        style={{ backgroundSize: 'cover' }}
+      ></div>
       <div 
         className="absolute inset-0 bg-[url('/hero-pattern.svg')] bg-repeat opacity-10"
         style={{ backgroundSize: '30px' }}
@@ -43,8 +47,8 @@ const HeroSection = () => {
             <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-portugal-red to-portugal-green opacity-30 blur-sm"></div>
             <div className="relative p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl">
               <img 
-                src="/hero-image.jpg" 
-                alt="Portugal coastal view"
+                src="/porto-riverside.jpg" 
+                alt="Porto riverside view with colorful buildings"
                 className="w-full h-auto rounded-lg"
               />
               <div className="mt-4 grid grid-cols-3 gap-4">
