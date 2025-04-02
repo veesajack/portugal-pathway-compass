@@ -1,15 +1,24 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User, LogOut } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/');
+    setIsMenuOpen(false);
   };
 
   return (
@@ -39,9 +48,25 @@ const Navbar = () => {
           <Link to="/about" className="text-foreground/80 hover:text-foreground transition-colors">
             About
           </Link>
-          <Button asChild variant="default">
-            <Link to="/login">Login</Link>
-          </Button>
+          
+          {user ? (
+            <>
+              <Button asChild variant="ghost" className="flex items-center">
+                <Link to="/dashboard">
+                  <User size={16} className="mr-2" />
+                  Dashboard
+                </Link>
+              </Button>
+              <Button variant="outline" onClick={handleSignOut} className="flex items-center">
+                <LogOut size={16} className="mr-2" />
+                Sign Out
+              </Button>
+            </>
+          ) : (
+            <Button asChild variant="default">
+              <Link to="/login">Login</Link>
+            </Button>
+          )}
         </nav>
 
         {/* Mobile Menu Button */}
@@ -96,9 +121,31 @@ const Navbar = () => {
         >
           About
         </Link>
-        <Button asChild className="w-full" onClick={() => setIsMenuOpen(false)}>
-          <Link to="/login">Login</Link>
-        </Button>
+        
+        {user ? (
+          <>
+            <Link
+              to="/dashboard"
+              className="text-lg font-medium flex items-center"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <User size={18} className="mr-2" />
+              Dashboard
+            </Link>
+            <Button
+              variant="outline"
+              onClick={handleSignOut}
+              className="flex items-center justify-center w-full"
+            >
+              <LogOut size={18} className="mr-2" />
+              Sign Out
+            </Button>
+          </>
+        ) : (
+          <Button asChild className="w-full" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/login">Login</Link>
+          </Button>
+        )}
       </div>
     </header>
   );
