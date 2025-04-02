@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -15,25 +14,25 @@ const Index = () => {
       title: 'Visa Eligibility Checker',
       description: 'Answer a few questions to find the right visa type for your situation and goals.',
       icon: <CheckCircle2 className="h-6 w-6" />,
-      imageSrc: '/eligibility-checker.jpg'
+      imageSrc: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1470&auto=format&fit=crop'
     },
     {
       title: 'Document Checklist Generator',
       description: 'Get a personalized list of all required documents for your specific visa application.',
       icon: <FileCheck className="h-6 w-6" />,
-      imageSrc: '/document-checklist.jpg'
+      imageSrc: 'https://images.unsplash.com/photo-1618005198919-177e9dd3b6a4?q=80&w=1374&auto=format&fit=crop'
     },
     {
       title: 'Application Tracking',
       description: 'Monitor the status of your application with regular updates and notifications.',
       icon: <Compass className="h-6 w-6" />,
-      imageSrc: '/application-tracking.jpg'
+      imageSrc: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1470&auto=format&fit=crop'
     },
     {
       title: 'Expert Consultation',
       description: 'Book one-on-one sessions with immigration experts for personalized guidance.',
       icon: <Calendar className="h-6 w-6" />,
-      imageSrc: '/expert-consultation.jpg'
+      imageSrc: 'https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=1470&auto=format&fit=crop'
     }
   ];
 
@@ -43,35 +42,35 @@ const Index = () => {
       description: 'For retirees and individuals with regular passive income looking to relocate to Portugal.',
       icon: <Home className="h-6 w-6" />,
       link: '/visas/d7',
-      imageSrc: '/d7-visa.jpg'
+      imageSrc: 'https://images.unsplash.com/photo-1578986404536-93507c8d77fe?q=80&w=1470&auto=format&fit=crop'
     },
     {
       title: 'Golden Visa',
       description: 'Investment-based residency program offering a fast track to Portuguese citizenship.',
       icon: <Briefcase className="h-6 w-6" />,
       link: '/visas/golden',
-      imageSrc: '/golden-visa.jpg'
+      imageSrc: 'https://images.unsplash.com/photo-1601041048269-554ccb3579fe?q=80&w=1470&auto=format&fit=crop'
     },
     {
       title: 'Student Visa',
       description: 'For international students enrolled in Portuguese educational institutions.',
       icon: <GraduationCap className="h-6 w-6" />,
       link: '/visas/student',
-      imageSrc: '/student-visa.jpg'
+      imageSrc: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1470&auto=format&fit=crop'
     },
     {
       title: 'Digital Nomad Visa',
       description: 'For remote workers and digital professionals looking to live in Portugal.',
       icon: <Laptop className="h-6 w-6" />,
       link: '/visas/digital-nomad',
-      imageSrc: '/digital-nomad-visa.jpg'
+      imageSrc: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1470&auto=format&fit=crop'
     },
     {
       title: 'Work Visa',
       description: 'For individuals with job offers from Portuguese companies.',
       icon: <Briefcase className="h-6 w-6" />,
       link: '/visas/work',
-      imageSrc: '/work-visa.jpg'
+      imageSrc: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1470&auto=format&fit=crop'
     }
   ];
 

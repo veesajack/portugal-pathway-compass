@@ -9,8 +9,8 @@ const HeroSection = () => {
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-portugal-blue-dark to-portugal-blue opacity-90"></div>
       <div 
-        className="absolute inset-0 bg-[url('/hero-bg.jpg')] bg-cover bg-center"
-        style={{ backgroundSize: 'cover' }}
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1555881400-74d7acaacd8b?q=80&w=1470&auto=format&fit=crop")' }}
       ></div>
       <div 
         className="absolute inset-0 bg-[url('/hero-pattern.svg')] bg-repeat opacity-10"
@@ -47,7 +47,7 @@ const HeroSection = () => {
             <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-portugal-red to-portugal-green opacity-30 blur-sm"></div>
             <div className="relative p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl">
               <img 
-                src="/porto-riverside.jpg" 
+                src="https://images.unsplash.com/photo-1574629173115-01ba37282238?q=80&w=1374&auto=format&fit=crop" 
                 alt="Porto riverside view with colorful buildings"
                 className="w-full h-auto rounded-lg"
               />
