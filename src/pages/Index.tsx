@@ -2,10 +2,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Compass, FileCheck, Globe, Calendar, CheckCircle2, Briefcase, Plane, Home, GraduationCap, Laptop } from 'lucide-react';
+import { ArrowRight, CheckCircle2, FileCheck, Compass, Calendar, Briefcase, Plane, Home, GraduationCap, Laptop } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Hero from '@/components/Hero';
+import HeroSection from '@/components/HeroSection';
 import FeatureCard from '@/components/FeatureCard';
 import VisaCard from '@/components/VisaCard';
 
@@ -71,14 +71,17 @@ const Index = () => {
       <Navbar />
       
       <main className="flex-grow">
-        <Hero />
+        <HeroSection />
         
         {/* Features Section */}
-        <section className="py-20 bg-background">
+        <section className="py-24 bg-background">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Tools to Simplify Your Immigration Journey</h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              <span className="inline-block py-1 px-3 border border-portugal-blue/20 rounded-full text-sm font-medium text-portugal-blue bg-portugal-blue/5 mb-4">
+                Our Tools
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Simplify Your Immigration Journey</h2>
+              <p className="text-xl text-muted-foreground">
                 From visa eligibility to document preparation, we provide everything you need to navigate the Portuguese immigration process.
               </p>
             </div>
@@ -95,7 +98,7 @@ const Index = () => {
             </div>
             
             <div className="text-center mt-12">
-              <Button asChild size="lg">
+              <Button asChild size="lg" className="px-6">
                 <Link to="/tools" className="flex items-center">
                   Explore Our Tools <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -105,11 +108,14 @@ const Index = () => {
         </section>
         
         {/* Visa Types Section */}
-        <section className="py-20 bg-secondary">
+        <section className="py-24 bg-secondary/50">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              <span className="inline-block py-1 px-3 border border-portugal-blue/20 rounded-full text-sm font-medium text-portugal-blue bg-portugal-blue/5 mb-4">
+                Visa Options
+              </span>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Find Your Path to Portugal</h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-xl text-muted-foreground">
                 Explore the different visa types available for relocating to Portugal based on your unique situation.
               </p>
             </div>
@@ -127,7 +133,7 @@ const Index = () => {
             </div>
             
             <div className="text-center mt-12">
-              <Button asChild size="lg" variant="secondary" className="bg-white border border-primary text-primary hover:bg-primary/5">
+              <Button asChild size="lg" variant="outline" className="border-portugal-blue text-portugal-blue hover:bg-portugal-blue/5 px-6">
                 <Link to="/visas" className="flex items-center">
                   Compare All Visa Types <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -137,18 +143,18 @@ const Index = () => {
         </section>
         
         {/* CTA Section */}
-        <section className="py-20 bg-primary text-primary-foreground">
+        <section className="py-24 bg-gradient-to-r from-portugal-blue-dark to-portugal-blue text-white">
           <div className="container mx-auto px-4 text-center">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-3xl mx-auto backdrop-blur-sm py-16 px-8 rounded-2xl bg-white/5 border border-white/10">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Portugal Journey?</h2>
-              <p className="text-xl mb-8 text-primary-foreground/90">
+              <p className="text-xl mb-8 text-white/90 max-w-xl mx-auto">
                 Get personalized guidance from immigration experts to make your move to Portugal smooth and hassle-free.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Button asChild size="lg" variant="secondary" className="text-primary font-medium">
+                <Button asChild size="lg" className="bg-white text-portugal-blue hover:bg-white/90 px-6">
                   <Link to="/consultation">Book a Consultation</Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10">
+                <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10 px-6">
                   <Link to="/tools/eligibility-checker">Check Your Eligibility</Link>
                 </Button>
               </div>

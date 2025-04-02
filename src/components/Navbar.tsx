@@ -3,22 +3,20 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, X, User, LogOut } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import MainNav from './MainNav';
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   const handleSignOut = async () => {
     await signOut();
     navigate('/');
-    setIsMenuOpen(false);
+    setIsOpen(false);
   };
 
   return (
@@ -27,125 +25,94 @@ const Navbar = () => {
         <div className="flex items-center">
           <Link to="/" className="flex items-center space-x-2">
             <img src="/logo.svg" alt="Portugal Pathway Compass" className="h-8 w-8" />
-            <span className="font-bold text-xl text-portugal-blue">Portugal Pathway</span>
+            <span className="font-medium text-xl">Portugal Pathway</span>
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
-          <Link to="/visas" className="text-foreground/80 hover:text-foreground transition-colors">
-            Visas
-          </Link>
-          <Link to="/tools" className="text-foreground/80 hover:text-foreground transition-colors">
-            Tools
-          </Link>
-          <Link to="/resources" className="text-foreground/80 hover:text-foreground transition-colors">
-            Resources
-          </Link>
-          <Link to="/consultation" className="text-foreground/80 hover:text-foreground transition-colors">
-            Consultation
-          </Link>
-          <Link to="/about" className="text-foreground/80 hover:text-foreground transition-colors">
-            About
-          </Link>
-          
+        <div className="hidden md:flex md:flex-1 md:justify-center">
+          <MainNav />
+        </div>
+
+        <div className="flex items-center gap-4">
           {user ? (
-            <>
-              <Button asChild variant="ghost" className="flex items-center">
+            <div className="hidden md:flex items-center gap-4">
+              <Button asChild variant="ghost" size="sm" className="px-4">
                 <Link to="/dashboard">
                   <User size={16} className="mr-2" />
                   Dashboard
                 </Link>
               </Button>
-              <Button variant="outline" onClick={handleSignOut} className="flex items-center">
+              <Button variant="outline" size="sm" onClick={handleSignOut} className="px-4">
                 <LogOut size={16} className="mr-2" />
                 Sign Out
               </Button>
-            </>
+            </div>
           ) : (
-            <Button asChild variant="default">
+            <Button asChild variant="default" size="sm" className="hidden md:inline-flex px-4">
               <Link to="/login">Login</Link>
             </Button>
           )}
-        </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 text-foreground"
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Navigation */}
-      <div
-        className={cn(
-          "md:hidden fixed inset-0 top-16 z-50 bg-background p-6 flex flex-col space-y-6 transform transition-transform duration-300",
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        )}
-      >
-        <Link
-          to="/visas"
-          className="text-lg font-medium"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Visas
-        </Link>
-        <Link
-          to="/tools"
-          className="text-lg font-medium"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Tools
-        </Link>
-        <Link
-          to="/resources"
-          className="text-lg font-medium"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Resources
-        </Link>
-        <Link
-          to="/consultation"
-          className="text-lg font-medium"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Consultation
-        </Link>
-        <Link
-          to="/about"
-          className="text-lg font-medium"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          About
-        </Link>
-        
-        {user ? (
-          <>
-            <Link
-              to="/dashboard"
-              className="text-lg font-medium flex items-center"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <User size={18} className="mr-2" />
-              Dashboard
-            </Link>
-            <Button
-              variant="outline"
-              onClick={handleSignOut}
-              className="flex items-center justify-center w-full"
-            >
-              <LogOut size={18} className="mr-2" />
-              Sign Out
-            </Button>
-          </>
-        ) : (
-          <Button asChild className="w-full" onClick={() => setIsMenuOpen(false)}>
-            <Link to="/login">Login</Link>
-          </Button>
-        )}
+          {/* Mobile Menu Trigger */}
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px] pr-0">
+              <nav className="flex flex-col gap-4 mt-8">
+                <Link to="/" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  Home
+                </Link>
+                <Link to="/visas" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  Visas
+                </Link>
+                <Link to="/tools" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  Tools
+                </Link>
+                <Link to="/resources" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  Resources
+                </Link>
+                <Link to="/consultation" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  Consultation
+                </Link>
+                <Link to="/about" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  About
+                </Link>
+                
+                <div className="border-t my-4"></div>
+                
+                {user ? (
+                  <>
+                    <Link
+                      to="/dashboard"
+                      className="px-2 py-1 text-lg font-medium flex items-center"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <User size={18} className="mr-2" />
+                      Dashboard
+                    </Link>
+                    <Button
+                      variant="outline"
+                      onClick={handleSignOut}
+                      className="mt-2"
+                    >
+                      <LogOut size={18} className="mr-2" />
+                      Sign Out
+                    </Button>
+                  </>
+                ) : (
+                  <Button asChild className="mt-2" onClick={() => setIsOpen(false)}>
+                    <Link to="/login">Login</Link>
+                  </Button>
+                )}
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
