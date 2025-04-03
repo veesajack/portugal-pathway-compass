@@ -20,7 +20,7 @@ const Index = () => {
       title: 'Document Checklist Generator',
       description: 'Get a personalized list of all required documents for your specific visa application.',
       icon: <FileCheck className="h-6 w-6" />,
-      imageSrc: 'https://images.unsplash.com/photo-1604079628040-94301bb21b91?q=80&w=1374&auto=format&fit=crop'
+      imageSrc: 'https://images.unsplash.com/photo-1581579438747-99ae8e75d9db?q=80&w=1470&auto=format&fit=crop'
     },
     {
       title: 'Application Tracking',
@@ -42,14 +42,14 @@ const Index = () => {
       description: 'For retirees and individuals with regular passive income looking to relocate to Portugal.',
       icon: <Home className="h-6 w-6" />,
       link: '/visas/d7',
-      imageSrc: 'https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?q=80&w=1932&auto=format&fit=crop'
+      imageSrc: 'https://images.unsplash.com/photo-1558036117-15d82a90b9b1?q=80&w=1470&auto=format&fit=crop'
     },
     {
       title: 'Golden Visa',
       description: 'Investment-based residency program offering a fast track to Portuguese citizenship.',
       icon: <Briefcase className="h-6 w-6" />,
       link: '/visas/golden',
-      imageSrc: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=2070&auto=format&fit=crop'
+      imageSrc: 'https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1470&auto=format&fit=crop'
     },
     {
       title: 'Student Visa',
