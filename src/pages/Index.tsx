@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -63,14 +64,14 @@ const Index = () => {
       description: 'For remote workers and digital professionals looking to live in Portugal.',
       icon: <Laptop className="h-6 w-6" />,
       link: '/visas/digital-nomad',
-      imageSrc: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1470&auto=format&fit=crop'
+      imageSrc: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=1470&auto=format&fit=crop'
     },
     {
       title: 'Work Visa',
       description: 'For individuals with job offers from Portuguese companies.',
       icon: <Briefcase className="h-6 w-6" />,
       link: '/visas/work',
-      imageSrc: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1470&auto=format&fit=crop'
+      imageSrc: 'https://images.unsplash.com/photo-1541185934-01b600ea069c?q=80&w=1470&auto=format&fit=crop'
     }
   ];
 

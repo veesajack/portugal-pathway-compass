@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hover-card';
 
 interface FeatureCardProps {
   title: string;
@@ -13,11 +14,12 @@ const FeatureCard = ({ title, description, icon, imageSrc }: FeatureCardProps) =
   return (
     <Card className="card-hover h-full overflow-hidden">
       {imageSrc && (
-        <div className="relative h-40 overflow-hidden">
+        <div className="relative h-40 overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
           <img 
             src={imageSrc} 
             alt={title}
-            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
         </div>
       )}

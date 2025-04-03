@@ -1,23 +1,48 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
+const portugalImages = [
+  '/lovable-uploads/a449fae1-f206-4a35-b7f6-f59dc4df2f65.png',
+  'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?q=80&w=1470&auto=format&fit=crop', // Lisboa
+  'https://images.unsplash.com/photo-1589470288084-ecad61835905?q=80&w=1470&auto=format&fit=crop', // Porto
+  'https://images.unsplash.com/photo-1516730416069-9b5475e61acf?q=80&w=1470&auto=format&fit=crop', // Algarve
+  'https://images.unsplash.com/photo-1517844386809-a2aca5eec3d9?q=80&w=1470&auto=format&fit=crop', // Sintra
+];
+
 const HeroSection = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % portugalImages.length);
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-portugal-blue-dark to-portugal-blue opacity-90"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-portugal-blue-dark to-portugal-blue opacity-90 z-10"></div>
+      
+      {portugalImages.map((img, index) => (
+        <div 
+          key={index}
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
+            index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{ backgroundImage: `url("${img}")` }}
+        ></div>
+      ))}
+      
       <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: 'url("/lovable-uploads/a449fae1-f206-4a35-b7f6-f59dc4df2f65.png")' }}
-      ></div>
-      <div 
-        className="absolute inset-0 bg-[url('/hero-pattern.svg')] bg-repeat opacity-10"
+        className="absolute inset-0 bg-[url('/hero-pattern.svg')] bg-repeat opacity-10 z-20"
         style={{ backgroundSize: '30px' }}
       ></div>
       
-      <div className="container relative z-10 mx-auto px-4 py-24 md:py-32 lg:py-40">
+      <div className="container relative z-30 mx-auto px-4 py-24 md:py-32 lg:py-40">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-12 items-center">
           <div className="space-y-6 text-left md:col-span-5">
             <span className="inline-block py-1 px-3 border border-white/20 rounded-full text-sm font-medium text-white/90 backdrop-blur-sm">
