@@ -10,7 +10,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-portugal-blue-dark to-portugal-blue opacity-90"></div>
       <div 
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: 'url("/lovable-uploads/dab6fa77-edc6-46ce-9658-99683bd8a920.png")' }}
+        style={{ backgroundImage: 'url("/lovable-uploads/a449fae1-f206-4a35-b7f6-f59dc4df2f65.png")' }}
       ></div>
       <div 
         className="absolute inset-0 bg-[url('/hero-pattern.svg')] bg-repeat opacity-10"
@@ -18,8 +18,8 @@ const HeroSection = () => {
       ></div>
       
       <div className="container relative z-10 mx-auto px-4 py-24 md:py-32 lg:py-40">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 items-center">
-          <div className="space-y-6 text-left md:col-span-3">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
+          <div className="space-y-6 text-left md:col-span-4">
             <span className="inline-block py-1 px-3 border border-white/20 rounded-full text-sm font-medium text-white/90 backdrop-blur-sm">
               Your Portugal Journey Starts Here
             </span>
@@ -45,13 +45,13 @@ const HeroSection = () => {
           </div>
           <div className="relative hidden md:block md:col-span-1">
             <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-portugal-red to-portugal-green opacity-30 blur-sm"></div>
-            <div className="relative p-3 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl">
+            <div className="relative p-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl">
               <img 
                 src="https://images.unsplash.com/photo-1513735492246-483525079686?q=80&w=1374&auto=format&fit=crop" 
                 alt="Lisbon view"
                 className="w-full h-auto rounded-lg"
               />
-              <div className="mt-3 grid grid-cols-3 gap-2">
+              <div className="mt-2 grid grid-cols-3 gap-2">
                 <div className="bg-white/20 backdrop-blur-sm p-1.5 rounded-lg text-center">
                   <p className="text-sm font-bold text-white">5+</p>
                   <p className="text-xs text-white/80">Visa Types</p>
