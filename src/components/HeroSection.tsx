@@ -20,14 +20,15 @@ const HeroSection = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % portugalImages.length);
-    }, 4000); // Slightly faster rotation
+    }, 4000);
 
     return () => clearInterval(intervalId);
   }, []);
 
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-portugal-blue-dark to-portugal-blue opacity-90 z-10"></div>
+      {/* Reduced opacity from 0.9 (90%) to 0.7 (70%) */}
+      <div className="absolute inset-0 bg-gradient-to-r from-portugal-blue-dark to-portugal-blue opacity-70 z-10"></div>
       
       {portugalImages.map((img, index) => (
         <div 
@@ -39,8 +40,9 @@ const HeroSection = () => {
         ></div>
       ))}
       
+      {/* Increased pattern opacity from 0.1 (10%) to 0.15 (15%) */}
       <div 
-        className="absolute inset-0 bg-[url('/hero-pattern.svg')] bg-repeat opacity-10 z-20"
+        className="absolute inset-0 bg-[url('/hero-pattern.svg')] bg-repeat opacity-15 z-20"
         style={{ backgroundSize: '30px' }}
       ></div>
       
@@ -71,8 +73,8 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="relative hidden md:block md:col-span-2">
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-portugal-red to-portugal-green opacity-30 blur-sm"></div>
-            <div className="relative p-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl">
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-portugal-red to-portugal-green opacity-40 blur-sm"></div>
+            <div className="relative p-2 bg-white/20 backdrop-blur-md rounded-2xl border border-white/30 shadow-xl">
               <div className="overflow-hidden rounded-lg">
                 <img 
                   src="https://images.unsplash.com/photo-1513735492246-483525079686?q=80&w=1374&auto=format&fit=crop" 
@@ -81,15 +83,15 @@ const HeroSection = () => {
                 />
               </div>
               <div className="mt-2 grid grid-cols-3 gap-2">
-                <div className="bg-white/20 backdrop-blur-sm p-1.5 rounded-lg text-center">
+                <div className="bg-white/30 backdrop-blur-sm p-1.5 rounded-lg text-center">
                   <p className="text-xs font-bold text-white">5+</p>
                   <p className="text-[10px] text-white/80">Visa Types</p>
                 </div>
-                <div className="bg-white/20 backdrop-blur-sm p-1.5 rounded-lg text-center">
+                <div className="bg-white/30 backdrop-blur-sm p-1.5 rounded-lg text-center">
                   <p className="text-xs font-bold text-white">98%</p>
                   <p className="text-[10px] text-white/80">Success</p>
                 </div>
-                <div className="bg-white/20 backdrop-blur-sm p-1.5 rounded-lg text-center">
+                <div className="bg-white/30 backdrop-blur-sm p-1.5 rounded-lg text-center">
                   <p className="text-xs font-bold text-white">500+</p>
                   <p className="text-[10px] text-white/80">Clients</p>
                 </div>
