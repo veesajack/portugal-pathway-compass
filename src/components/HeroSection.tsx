@@ -27,8 +27,6 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden">
-      {/* Removed the blue gradient overlay completely */}
-      
       {portugalImages.map((img, index) => (
         <div 
           key={index}
@@ -39,9 +37,9 @@ const HeroSection = () => {
         ></div>
       ))}
       
-      {/* Added a subtle dark overlay for text readability instead of the blue one */}
+      {/* Portugal flag-inspired gradient overlay for transitions */}
       <div 
-        className="absolute inset-0 bg-black/30 z-20"
+        className="absolute inset-0 bg-gradient-to-r from-portugal-green via-white/30 to-portugal-red opacity-30 z-20"
       ></div>
       
       <div className="container relative z-30 mx-auto px-4 py-24 md:py-32 lg:py-40">
@@ -71,7 +69,7 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="relative hidden md:block md:col-span-2">
-            <div className="absolute -inset-1 rounded-2xl bg-white/30 opacity-40 blur-sm"></div>
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-portugal-green to-portugal-red opacity-40 blur-sm"></div>
             <div className="relative p-2 bg-white/20 backdrop-blur-md rounded-2xl border border-white/30 shadow-xl">
               <div className="overflow-hidden rounded-lg">
                 <img 
