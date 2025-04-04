@@ -18,7 +18,7 @@ const VisaCard = ({ title, description, icon, link, color = "bg-card", imageSrc 
   return (
     <Card className={`card-hover ${color} border-none overflow-hidden`}>
       {imageSrc && (
-        <div className="relative h-48 overflow-hidden group">
+        <div className="relative h-48 overflow-hidden group cursor-pointer">
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
           <span className="absolute bottom-4 left-4 text-white font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">View {title} Details</span>
           <img 

@@ -10,6 +10,8 @@ const portugalImages = [
   'https://images.unsplash.com/photo-1589470288084-ecad61835905?q=80&w=1470&auto=format&fit=crop', // Porto
   'https://images.unsplash.com/photo-1516730416069-9b5475e61acf?q=80&w=1470&auto=format&fit=crop', // Algarve
   'https://images.unsplash.com/photo-1517844386809-a2aca5eec3d9?q=80&w=1470&auto=format&fit=crop', // Sintra
+  'https://images.unsplash.com/photo-1502920514313-52581002a659?q=80&w=1470&auto=format&fit=crop', // Cascais
+  'https://images.unsplash.com/photo-1575540203949-44ecbb2a3ae3?q=80&w=1470&auto=format&fit=crop' // Douro Valley
 ];
 
 const HeroSection = () => {
@@ -18,7 +20,7 @@ const HeroSection = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % portugalImages.length);
-    }, 5000);
+    }, 4000); // Slightly faster rotation
 
     return () => clearInterval(intervalId);
   }, []);
@@ -44,7 +46,7 @@ const HeroSection = () => {
       
       <div className="container relative z-30 mx-auto px-4 py-24 md:py-32 lg:py-40">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-12 items-center">
-          <div className="space-y-6 text-left md:col-span-5">
+          <div className="space-y-6 text-left md:col-span-4">
             <span className="inline-block py-1 px-3 border border-white/20 rounded-full text-sm font-medium text-white/90 backdrop-blur-sm">
               Your Portugal Journey Starts Here
             </span>
@@ -68,24 +70,26 @@ const HeroSection = () => {
               </Button>
             </div>
           </div>
-          <div className="relative hidden md:block md:col-span-1">
-            <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-portugal-red to-portugal-green opacity-30 blur-sm"></div>
-            <div className="relative p-1.5 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl">
-              <img 
-                src="https://images.unsplash.com/photo-1513735492246-483525079686?q=80&w=1374&auto=format&fit=crop" 
-                alt="Lisbon view"
-                className="w-full h-auto rounded-lg"
-              />
-              <div className="mt-1.5 grid grid-cols-3 gap-1.5">
-                <div className="bg-white/20 backdrop-blur-sm p-1 rounded-lg text-center">
+          <div className="relative hidden md:block md:col-span-2">
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-portugal-red to-portugal-green opacity-30 blur-sm"></div>
+            <div className="relative p-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl">
+              <div className="overflow-hidden rounded-lg">
+                <img 
+                  src="https://images.unsplash.com/photo-1513735492246-483525079686?q=80&w=1374&auto=format&fit=crop" 
+                  alt="Lisbon view"
+                  className="w-full h-auto rounded-lg object-cover transition-transform duration-1000 hover:scale-110"
+                />
+              </div>
+              <div className="mt-2 grid grid-cols-3 gap-2">
+                <div className="bg-white/20 backdrop-blur-sm p-1.5 rounded-lg text-center">
                   <p className="text-xs font-bold text-white">5+</p>
                   <p className="text-[10px] text-white/80">Visa Types</p>
                 </div>
-                <div className="bg-white/20 backdrop-blur-sm p-1 rounded-lg text-center">
+                <div className="bg-white/20 backdrop-blur-sm p-1.5 rounded-lg text-center">
                   <p className="text-xs font-bold text-white">98%</p>
                   <p className="text-[10px] text-white/80">Success</p>
                 </div>
-                <div className="bg-white/20 backdrop-blur-sm p-1 rounded-lg text-center">
+                <div className="bg-white/20 backdrop-blur-sm p-1.5 rounded-lg text-center">
                   <p className="text-xs font-bold text-white">500+</p>
                   <p className="text-[10px] text-white/80">Clients</p>
                 </div>
