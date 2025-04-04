@@ -37,11 +37,6 @@ const HeroSection = () => {
         ></div>
       ))}
       
-      {/* Portugal flag-inspired gradient overlay for transitions */}
-      <div 
-        className="absolute inset-0 bg-gradient-to-r from-portugal-green via-white/30 to-portugal-red opacity-30 z-20"
-      ></div>
-      
       <div className="container relative z-30 mx-auto px-4 py-24 md:py-32 lg:py-40">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-12 items-center">
           <div className="space-y-6 text-left md:col-span-4">
