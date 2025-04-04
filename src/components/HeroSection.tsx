@@ -27,8 +27,7 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden">
-      {/* Reduced opacity from 0.9 (90%) to 0.7 (70%) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-portugal-blue-dark to-portugal-blue opacity-70 z-10"></div>
+      {/* Removed the blue gradient overlay completely */}
       
       {portugalImages.map((img, index) => (
         <div 
@@ -40,10 +39,9 @@ const HeroSection = () => {
         ></div>
       ))}
       
-      {/* Increased pattern opacity from 0.1 (10%) to 0.15 (15%) */}
+      {/* Added a subtle dark overlay for text readability instead of the blue one */}
       <div 
-        className="absolute inset-0 bg-[url('/hero-pattern.svg')] bg-repeat opacity-15 z-20"
-        style={{ backgroundSize: '30px' }}
+        className="absolute inset-0 bg-black/30 z-20"
       ></div>
       
       <div className="container relative z-30 mx-auto px-4 py-24 md:py-32 lg:py-40">
@@ -73,7 +71,7 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="relative hidden md:block md:col-span-2">
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-portugal-red to-portugal-green opacity-40 blur-sm"></div>
+            <div className="absolute -inset-1 rounded-2xl bg-white/30 opacity-40 blur-sm"></div>
             <div className="relative p-2 bg-white/20 backdrop-blur-md rounded-2xl border border-white/30 shadow-xl">
               <div className="overflow-hidden rounded-lg">
                 <img 
