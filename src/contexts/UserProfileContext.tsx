@@ -50,8 +50,18 @@ export function UserProfileProvider({ children }: { children: React.ReactNode })
       }
 
       if (data) {
-        setProfile(data as UserProfile);
-        setIsAdmin(data.role === 'admin');
+        // Ensure all required fields are present
+        const profileData: UserProfile = {
+          id: data.id,
+          full_name: data.full_name,
+          avatar_url: data.avatar_url,
+          phone: data.phone || null,
+          nationality: data.nationality || null,
+          role: data.role || 'user'
+        };
+        
+        setProfile(profileData);
+        setIsAdmin(profileData.role === 'admin');
       }
     } catch (error: any) {
       toast({

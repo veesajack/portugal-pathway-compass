@@ -75,6 +75,7 @@ const ApplicationForm = () => {
   useEffect(() => {
     const fetchVisaTypes = async () => {
       try {
+        // Query the new visa_types table we created in Supabase
         const { data, error } = await supabase
           .from('visa_types')
           .select('id, name, description')
