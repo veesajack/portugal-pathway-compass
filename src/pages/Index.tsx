@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
 import FeatureCard from '@/components/FeatureCard';
 import VisaCard from '@/components/VisaCard';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
   const features = [
@@ -168,6 +169,14 @@ const Index = () => {
                 <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10 px-6">
                   <Link to="/tools/eligibility-checker">Check Your Eligibility</Link>
                 </Button>
+                <WhatsAppButton 
+                  phoneNumber="+351910000000" 
+                  message="Hello, I'd like to learn more about relocating to Portugal." 
+                  variant="outline"
+                  className="bg-green-600/80 border-white text-white hover:bg-green-700/60 px-6"
+                >
+                  WhatsApp Chat Now
+                </WhatsAppButton>
               </div>
             </div>
           </div>

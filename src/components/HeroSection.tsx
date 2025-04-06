@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Phone } from 'lucide-react';
 
 const portugalImages = [
   '/lovable-uploads/a449fae1-f206-4a35-b7f6-f59dc4df2f65.png',
@@ -13,6 +13,10 @@ const portugalImages = [
   'https://images.unsplash.com/photo-1502920514313-52581002a659?q=80&w=1470&auto=format&fit=crop', // Cascais
   'https://images.unsplash.com/photo-1575540203949-44ecbb2a3ae3?q=80&w=1470&auto=format&fit=crop' // Douro Valley
 ];
+
+// WhatsApp contact information
+const whatsappNumber = "+351910000000"; // Replace with actual Portugal WhatsApp number
+const whatsappMessage = encodeURIComponent("Hello, I'm interested in Portugal immigration assistance.");
 
 const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -65,6 +69,15 @@ const HeroSection = () => {
                   Book Consultation
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white text-white hover:bg-white/10 bg-green-600/80"
+                onClick={() => window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank')}
+              >
+                <Phone className="mr-2 h-4 w-4" />
+                WhatsApp Us
               </Button>
             </div>
           </div>
