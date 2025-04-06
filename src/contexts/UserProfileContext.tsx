@@ -50,14 +50,15 @@ export function UserProfileProvider({ children }: { children: React.ReactNode })
       }
 
       if (data) {
-        // Ensure all required fields are present
+        // Create profile with type safety
         const profileData: UserProfile = {
           id: data.id,
           full_name: data.full_name,
           avatar_url: data.avatar_url,
-          phone: data.phone || null,
-          nationality: data.nationality || null,
-          role: data.role || 'user'
+          // Use optional chaining to safely access potentially undefined properties
+          phone: data.phone ?? null,
+          nationality: data.nationality ?? null,
+          role: data.role ?? 'user'
         };
         
         setProfile(profileData);

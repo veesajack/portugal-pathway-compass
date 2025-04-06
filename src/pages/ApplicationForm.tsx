@@ -75,7 +75,7 @@ const ApplicationForm = () => {
   useEffect(() => {
     const fetchVisaTypes = async () => {
       try {
-        // Query the new visa_types table we created in Supabase
+        // Query the visa_types table from our database
         const { data, error } = await supabase
           .from('visa_types')
           .select('id, name, description')
@@ -83,7 +83,8 @@ const ApplicationForm = () => {
 
         if (error) throw error;
         
-        setVisaTypes(data as VisaType[]);
+        // Type assertion to ensure the data matches our VisaType interface
+        setVisaTypes(data as unknown as VisaType[]);
       } catch (error: any) {
         console.error('Error fetching visa types:', error);
         toast({
