@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -170,7 +169,6 @@ const Index = () => {
                   <Link to="/tools/eligibility-checker">Check Your Eligibility</Link>
                 </Button>
                 <WhatsAppButton 
-                  phoneNumber="+351910000000" 
                   message="Hello, I'd like to learn more about relocating to Portugal." 
                   variant="outline"
                   className="bg-green-600/80 border-white text-white hover:bg-green-700/60 px-6"

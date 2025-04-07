@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
@@ -51,7 +50,6 @@ const Dashboard = () => {
       try {
         setLoading(true);
         
-        // Fetch user's applications
         const { data: applicationsData, error: applicationsError } = await supabase
           .from('visa_applications')
           .select('id, visa_type, status, application_date')
@@ -61,7 +59,6 @@ const Dashboard = () => {
           
         if (applicationsError) throw applicationsError;
         
-        // Fetch user's consultations
         const { data: consultationsData, error: consultationsError } = await supabase
           .from('consultations')
           .select('id, consultant_name, consultation_date, status')
@@ -201,7 +198,6 @@ const Dashboard = () => {
                 <Link to="/consultation">Schedule Consultation</Link>
               </Button>
               <WhatsAppButton 
-                phoneNumber="+351910000000" 
                 message="Hello, I'd like to schedule a consultation about my Portugal immigration process."
                 variant="outline"
                 className="w-full bg-green-600 text-white hover:bg-green-700"

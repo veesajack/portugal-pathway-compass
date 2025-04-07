@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Phone } from 'lucide-react';
 
 interface WhatsAppButtonProps {
-  phoneNumber: string;
+  phoneNumber?: string;
   message?: string;
   variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
   className?: string;
@@ -12,7 +12,7 @@ interface WhatsAppButtonProps {
 }
 
 const WhatsAppButton = ({ 
-  phoneNumber, 
+  phoneNumber = "+351936329523", 
   message = "Hello, I'm interested in Portugal immigration assistance.", 
   variant = "default",
   className = "",
