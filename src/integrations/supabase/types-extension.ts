@@ -5,7 +5,9 @@ import type { Database as GeneratedDatabase, Json } from './types';
 export interface Database extends GeneratedDatabase {
   public: {
     Tables: {
-      ...GeneratedDatabase['public']['Tables'],
+      profiles: GeneratedDatabase['public']['Tables']['profiles'];
+      consultations: GeneratedDatabase['public']['Tables']['consultations'];
+      visa_applications: GeneratedDatabase['public']['Tables']['visa_applications'];
       testimonials: {
         Row: {
           id: string;
