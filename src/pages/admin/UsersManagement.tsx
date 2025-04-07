@@ -27,7 +27,7 @@ import { Search, User, Trash, UserCheck, Shield } from 'lucide-react';
 
 interface UserData {
   id: string;
-  email: string;
+  email?: string; // Make email optional to match profile data
   full_name: string | null;
   avatar_url: string | null;
   phone: string | null;
@@ -45,19 +45,50 @@ const UsersManagement = () => {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const { data: authUsers, error: authError } = await supabase
+      // Fetch users from profiles table
+      const { data: profileData, error: profileError } = await supabase
         .from('profiles')
         .select('*');
         
-      if (authError) throw authError;
+      if (profileError) throw profileError;
       
-      setUsers(authUsers as UserData[]);
+      // Fetch user emails from auth users (if you have access)
+      const { data: userData, error: userError } = await supabase.auth.admin.listUsers();
+      
+      let userProfiles: UserData[] = [];
+      
+      // If auth users are accessible, merge the data
+      if (userData && !userError) {
+        userProfiles = profileData.map(profile => {
+          const matchingUser = userData.users.find(user => user.id === profile.id);
+          return {
+            ...profile,
+            email: matchingUser?.email || 'No email access'
+          } as UserData;
+        });
+      } else {
+        // If we can't access auth users, use just the profiles
+        userProfiles = profileData as UserData[];
+      }
+      
+      setUsers(userProfiles);
     } catch (error: any) {
-      toast({
-        title: "Error fetching users",
-        description: error.message,
-        variant: "destructive",
-      });
+      // If admin.listUsers fails (likely due to permissions), fall back to using just profiles
+      try {
+        const { data: profileData, error: profileError } = await supabase
+          .from('profiles')
+          .select('*');
+          
+        if (profileError) throw profileError;
+        
+        setUsers(profileData as UserData[]);
+      } catch (fallbackError: any) {
+        toast({
+          title: "Error fetching users",
+          description: fallbackError.message,
+          variant: "destructive",
+        });
+      }
     } finally {
       setLoading(false);
     }
@@ -164,7 +195,7 @@ const UsersManagement = () => {
                           <User className="h-8 w-8 rounded-full bg-muted p-1" />
                           <div>
                             <div className="font-medium">{user.full_name || 'Unnamed User'}</div>
-                            <div className="text-sm text-muted-foreground">{user.email}</div>
+                            <div className="text-sm text-muted-foreground">{user.email || 'Email not available'}</div>
                           </div>
                         </div>
                       </TableCell>
