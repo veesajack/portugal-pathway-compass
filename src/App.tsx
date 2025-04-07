@@ -20,6 +20,12 @@ import UserProfile from "./pages/UserProfile";
 import ApplicationForm from "./pages/ApplicationForm";
 import Applications from "./pages/Applications";
 
+// Admin pages
+import UsersManagement from "./pages/admin/UsersManagement";
+import ApplicationsManagement from "./pages/admin/ApplicationsManagement";
+import TestimonialsManagement from "./pages/admin/TestimonialsManagement";
+import VisaTypesManagement from "./pages/admin/VisaTypesManagement";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -56,11 +62,34 @@ const App = () => (
                   <ApplicationForm />
                 </ProtectedRoute>
               } />
+              
+              {/* Admin routes */}
               <Route path="/admin" element={
                 <AdminProtectedRoute>
                   <AdminDashboard />
                 </AdminProtectedRoute>
               } />
+              <Route path="/admin/users" element={
+                <AdminProtectedRoute>
+                  <UsersManagement />
+                </AdminProtectedRoute>
+              } />
+              <Route path="/admin/applications" element={
+                <AdminProtectedRoute>
+                  <ApplicationsManagement />
+                </AdminProtectedRoute>
+              } />
+              <Route path="/admin/testimonials" element={
+                <AdminProtectedRoute>
+                  <TestimonialsManagement />
+                </AdminProtectedRoute>
+              } />
+              <Route path="/admin/visa-types" element={
+                <AdminProtectedRoute>
+                  <VisaTypesManagement />
+                </AdminProtectedRoute>
+              } />
+              
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

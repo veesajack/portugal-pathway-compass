@@ -1,7 +1,6 @@
-
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { supabase } from '@/integrations/supabase/client';
+import { extendedSupabase as supabase } from '@/integrations/supabase/types-extension';
 import { toast } from '@/hooks/use-toast';
 
 interface UserProfile {
@@ -56,9 +55,9 @@ export function UserProfileProvider({ children }: { children: React.ReactNode })
           full_name: data.full_name,
           avatar_url: data.avatar_url,
           // Handle potentially missing fields in the database
-          phone: data.phone !== undefined ? data.phone : null,
-          nationality: data.nationality !== undefined ? data.nationality : null,
-          role: data.role !== undefined ? data.role : 'user'
+          phone: data.phone || null,
+          nationality: data.nationality || null,
+          role: data.role || 'user'
         };
         
         setProfile(profileData);

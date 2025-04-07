@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { supabase } from '@/integrations/supabase/client';
+import { extendedSupabase as supabase } from '@/integrations/supabase/types-extension';
 import { Bell, Check, Info, AlertTriangle, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';

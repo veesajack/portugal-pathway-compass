@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { supabase } from '@/integrations/supabase/client';
+import { extendedSupabase as supabase } from '@/integrations/supabase/types-extension';
 import { toast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -59,8 +58,8 @@ const DocumentUpload = ({
         .from('documents')
         .upload(filePath, file, {
           upsert: true,
-          onUploadProgress: (progress) => {
-            setUploadProgress(Math.round((progress.loaded / progress.total) * 100));
+          onUploadProgress: (event) => {
+            setUploadProgress(Math.round((event.loaded / event.total) * 100));
           }
         });
         

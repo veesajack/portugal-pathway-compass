@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { supabase } from '@/integrations/supabase/client';
+import { extendedSupabase as supabase } from '@/integrations/supabase/types-extension';
 import { toast } from '@/hooks/use-toast';
 
 type DocumentType = 'passport' | 'visa' | 'residence_permit' | 'proof_of_income' | 'criminal_record' | 'other';
@@ -37,7 +37,7 @@ export function useDocumentStorage() {
       const filePath = `${user.id}/${options.applicationId}/${options.documentType}/${fileName}`;
       
       // Upload file to storage
-      const { error: uploadError } = await supabase.storage
+      const { error: uploadError, data } = await supabase.storage
         .from('documents')
         .upload(filePath, file, {
           upsert: true,
@@ -62,7 +62,7 @@ export function useDocumentStorage() {
       };
       
       // Add document record to database
-      const { data, error: dbError } = await supabase
+      const { data: docData, error: dbError } = await supabase
         .from('documents')
         .insert({
           user_id: user.id,
@@ -78,11 +78,15 @@ export function useDocumentStorage() {
         throw dbError;
       }
       
+      const { data: publicUrlData } = supabase.storage
+        .from('documents')
+        .getPublicUrl(filePath);
+      
       return { 
-        documentId: data.id,
+        documentId: docData.id,
         filePath, 
         fileName: file.name,
-        url: `${supabase.storageUrl}/object/public/documents/${filePath}`
+        url: publicUrlData.publicUrl
       };
     } catch (error: any) {
       toast({
