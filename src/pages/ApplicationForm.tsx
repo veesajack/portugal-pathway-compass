@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -80,33 +79,32 @@ const ApplicationForm = () => {
   useEffect(() => {
     const fetchVisaTypes = async () => {
       try {
-        // Directly defining visa types as a fallback
-        const fallbackVisaTypes: VisaType[] = [
-          { id: 'd7', name: 'D7 Passive Income Visa' },
-          { id: 'golden', name: 'Golden Visa' },
-          { id: 'student', name: 'Student Visa' },
-          { id: 'digital_nomad', name: 'Digital Nomad Visa' },
-          { id: 'work', name: 'Work Visa' }
-        ];
-        
-        try {
-          // Try to fetch from the database first
-          const { data, error } = await supabase
-            .from('visa_types')
-            .select('*');
+        // Try to fetch from the database first
+        const { data, error } = await supabase
+          .from('visa_types')
+          .select('id, name, description');
             
-          if (error) {
-            console.warn('Error fetching visa types from database:', error);
-            setVisaTypes(fallbackVisaTypes);
-          } else if (data && data.length > 0) {
-            setVisaTypes(data as VisaType[]);
-          } else {
-            console.warn('No visa types found in database, using fallback data');
-            setVisaTypes(fallbackVisaTypes);
-          }
-        } catch (dbError) {
-          console.warn('Database error:', dbError);
-          setVisaTypes(fallbackVisaTypes);
+        if (error) {
+          console.warn('Error fetching visa types from database:', error);
+          // Fallback visa types
+          setVisaTypes([
+            { id: 'd7', name: 'D7 Passive Income Visa' },
+            { id: 'golden', name: 'Golden Visa' },
+            { id: 'student', name: 'Student Visa' },
+            { id: 'digital_nomad', name: 'Digital Nomad Visa' },
+            { id: 'work', name: 'Work Visa' }
+          ]);
+        } else if (data && data.length > 0) {
+          setVisaTypes(data as VisaType[]);
+        } else {
+          console.warn('No visa types found in database, using fallback data');
+          setVisaTypes([
+            { id: 'd7', name: 'D7 Passive Income Visa' },
+            { id: 'golden', name: 'Golden Visa' },
+            { id: 'student', name: 'Student Visa' },
+            { id: 'digital_nomad', name: 'Digital Nomad Visa' },
+            { id: 'work', name: 'Work Visa' }
+          ]);
         }
       } catch (error) {
         console.error('Error setting up visa types:', error);

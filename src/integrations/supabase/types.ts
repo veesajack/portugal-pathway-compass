@@ -39,12 +39,89 @@ export type Database = {
         }
         Relationships: []
       }
+      documents: {
+        Row: {
+          admin_notes: string | null
+          application_id: string
+          document_type: string
+          file_name: string
+          file_path: string
+          id: string
+          status: string | null
+          uploaded_at: string | null
+          user_id: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          application_id: string
+          document_type: string
+          file_name: string
+          file_path: string
+          id?: string
+          status?: string | null
+          uploaded_at?: string | null
+          user_id: string
+        }
+        Update: {
+          admin_notes?: string | null
+          application_id?: string
+          document_type?: string
+          file_name?: string
+          file_path?: string
+          id?: string
+          status?: string | null
+          uploaded_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "documents_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "visa_applications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      notifications: {
+        Row: {
+          created_at: string | null
+          id: string
+          is_read: boolean | null
+          message: string
+          title: string
+          type: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          is_read?: boolean | null
+          message: string
+          title: string
+          type?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          is_read?: boolean | null
+          message?: string
+          title?: string
+          type?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
           created_at: string
           full_name: string | null
           id: string
+          nationality: string | null
+          phone: string | null
+          role: string | null
           updated_at: string
         }
         Insert: {
@@ -52,6 +129,9 @@ export type Database = {
           created_at?: string
           full_name?: string | null
           id: string
+          nationality?: string | null
+          phone?: string | null
+          role?: string | null
           updated_at?: string
         }
         Update: {
@@ -59,7 +139,43 @@ export type Database = {
           created_at?: string
           full_name?: string | null
           id?: string
+          nationality?: string | null
+          phone?: string | null
+          role?: string | null
           updated_at?: string
+        }
+        Relationships: []
+      }
+      testimonials: {
+        Row: {
+          avatar_url: string | null
+          content: string
+          created_at: string | null
+          id: string
+          is_featured: boolean | null
+          name: string
+          rating: number | null
+          visa_type: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          content: string
+          created_at?: string | null
+          id?: string
+          is_featured?: boolean | null
+          name: string
+          rating?: number | null
+          visa_type?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          content?: string
+          created_at?: string | null
+          id?: string
+          is_featured?: boolean | null
+          name?: string
+          rating?: number | null
+          visa_type?: string | null
         }
         Relationships: []
       }
@@ -93,6 +209,36 @@ export type Database = {
           updated_at?: string
           user_id?: string
           visa_type?: string
+        }
+        Relationships: []
+      }
+      visa_types: {
+        Row: {
+          description: string | null
+          eligibility_criteria: Json | null
+          fees: string | null
+          id: string
+          name: string
+          processing_time: string | null
+          requirements: Json | null
+        }
+        Insert: {
+          description?: string | null
+          eligibility_criteria?: Json | null
+          fees?: string | null
+          id: string
+          name: string
+          processing_time?: string | null
+          requirements?: Json | null
+        }
+        Update: {
+          description?: string | null
+          eligibility_criteria?: Json | null
+          fees?: string | null
+          id?: string
+          name?: string
+          processing_time?: string | null
+          requirements?: Json | null
         }
         Relationships: []
       }
