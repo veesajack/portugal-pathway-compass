@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { extendedSupabase as supabase } from '@/integrations/supabase/types-extension';
@@ -56,16 +57,14 @@ const DocumentUpload = ({
       // Upload file to storage
       const { error: uploadError } = await supabase.storage
         .from('documents')
-        .upload(filePath, file, {
-          upsert: true,
-          onUploadProgress: (event) => {
-            setUploadProgress(Math.round((event.loaded / event.total) * 100));
-          }
-        });
+        .upload(filePath, file, { upsert: true });
         
       if (uploadError) {
         throw uploadError;
       }
+
+      // Simulate progress since we can't use onUploadProgress directly
+      setUploadProgress(100);
       
       // Add document record to database
       const { error: dbError } = await supabase

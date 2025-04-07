@@ -39,18 +39,15 @@ export function useDocumentStorage() {
       // Upload file to storage
       const { error: uploadError, data } = await supabase.storage
         .from('documents')
-        .upload(filePath, file, {
-          upsert: true,
-          onUploadProgress: (event) => {
-            if (options.onProgress) {
-              const progress = event.loaded / event.total;
-              options.onProgress(Math.round(progress * 100));
-            }
-          },
-        });
+        .upload(filePath, file, { upsert: true });
         
       if (uploadError) {
         throw uploadError;
+      }
+      
+      // Simulate progress since we can't use onUploadProgress
+      if (options.onProgress) {
+        options.onProgress(100);
       }
       
       // Create metadata
