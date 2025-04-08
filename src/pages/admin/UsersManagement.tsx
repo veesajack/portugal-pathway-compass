@@ -36,6 +36,16 @@ interface UserData {
   created_at: string;
 }
 
+// Define auth user type to fix the TypeScript error
+interface AuthUser {
+  id: string;
+  email?: string;
+}
+
+interface AuthResponse {
+  users: AuthUser[];
+}
+
 const UsersManagement = () => {
   const [users, setUsers] = useState<UserData[]>([]);
   const [loading, setLoading] = useState(true);
@@ -53,7 +63,10 @@ const UsersManagement = () => {
       if (profileError) throw profileError;
       
       // Fetch user emails from auth users (if you have access)
-      const { data: userData, error: userError } = await supabase.auth.admin.listUsers();
+      const { data: userData, error: userError } = await supabase.auth.admin.listUsers() as { 
+        data: AuthResponse | null; 
+        error: Error | null 
+      };
       
       let userProfiles: UserData[] = [];
       
