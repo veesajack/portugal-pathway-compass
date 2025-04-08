@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -38,7 +37,6 @@ const HeroSection = () => {
         ></div>
       ))}
       
-      {/* Very subtle overlay at 2% opacity */}
       <div 
         className="absolute inset-0 bg-gradient-to-r from-portugal-green via-white to-portugal-red opacity-[0.02] z-20"
       ></div>
