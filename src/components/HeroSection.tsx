@@ -1,41 +1,20 @@
-import React, { useState, useEffect } from 'react';
+
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 
-const portugalImages = [
-  '/lovable-uploads/a449fae1-f206-4a35-b7f6-f59dc4df2f65.png',
-  'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?q=80&w=1470&auto=format&fit=crop', // Lisboa
-  'https://images.unsplash.com/photo-1589470288084-ecad61835905?q=80&w=1470&auto=format&fit=crop', // Porto
-  'https://images.unsplash.com/photo-1516730416069-9b5475e61acf?q=80&w=1470&auto=format&fit=crop', // Algarve
-  'https://images.unsplash.com/photo-1517844386809-a2aca5eec3d9?q=80&w=1470&auto=format&fit=crop', // Sintra
-  'https://images.unsplash.com/photo-1502920514313-52581002a659?q=80&w=1470&auto=format&fit=crop', // Cascais
-  'https://images.unsplash.com/photo-1575540203949-44ecbb2a3ae3?q=80&w=1470&auto=format&fit=crop' // Douro Valley
-];
-
 const HeroSection = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % portugalImages.length);
-    }, 4000);
-
-    return () => clearInterval(intervalId);
-  }, []);
-
   return (
     <section className="relative overflow-hidden">
-      {portugalImages.map((img, index) => (
-        <div 
-          key={index}
-          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
-            index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-          }`}
-          style={{ backgroundImage: `url("${img}")` }}
-        ></div>
-      ))}
+      {/* Single background image instead of slideshow */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ 
+          backgroundImage: `url('/lovable-uploads/a449fae1-f206-4a35-b7f6-f59dc4df2f65.png')` 
+        }}
+      ></div>
       
       <div 
         className="absolute inset-0 bg-gradient-to-r from-portugal-green via-white to-portugal-red opacity-[0.02] z-20"
