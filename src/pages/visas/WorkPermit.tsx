@@ -14,25 +14,60 @@ const WorkPermit = () => {
     <div className="flex flex-col min-h-screen">
       <Navbar />
 
-      <div className="bg-gradient-to-b from-purple-50 to-white py-16">
+      <div 
+        className="bg-cover bg-center py-20" 
+        style={{ 
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1470&auto=format&fit=crop')`,
+        }}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <Badge className="mb-4 bg-purple-100 text-purple-800 hover:bg-purple-200">Employment Visa</Badge>
-            <h1 className="text-4xl font-bold mb-6">Portugal Work Permit Visa</h1>
-            <p className="text-xl text-muted-foreground mb-8">
+            <h1 className="text-4xl font-bold mb-6 text-white">Portugal Work Permit Visa</h1>
+            <p className="text-xl mb-8 text-white">
               The Work Permit visa is designed for non-EU citizens who have secured a job offer from a Portuguese employer.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
                 <Link to="/consultation">Schedule a Consultation</Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="bg-white/10 text-white hover:bg-white/20 border-white">
                 <Link to="/tools/eligibility-checker">Check Your Eligibility</Link>
               </Button>
             </div>
           </div>
         </div>
       </div>
+
+      <section className="py-12 bg-gradient-to-b from-purple-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-6 text-center">End-to-End Work Permit Assistance</h2>
+            <p className="text-lg text-muted-foreground mb-8 text-center">
+              We specialize in providing end-to-end assistance for work permit visa applications. Our knowledgeable team
+              guides clients through every step of the process—from the first consultation to receiving final approval.
+            </p>
+            <div 
+              className="rounded-xl overflow-hidden relative mb-12"
+              style={{ height: "350px" }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=3270&auto=format&fit=crop" 
+                alt="Professional workplace" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 flex flex-col justify-center z-20 p-8 md:w-1/2">
+                <h3 className="text-2xl font-bold mb-4 text-white">Comprehensive Support</h3>
+                <p className="text-white/90">
+                  Whether you're a skilled professional or an entrepreneur, we are here to support you in obtaining 
+                  the work permit necessary to move forward with your plans.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <main className="flex-grow container mx-auto px-4 py-12">
         <Tabs defaultValue="overview" className="max-w-5xl mx-auto">
@@ -48,7 +83,7 @@ const WorkPermit = () => {
               <div>
                 <h2 className="text-2xl font-bold mb-4">About the Work Permit Visa</h2>
                 <p className="mb-4 text-muted-foreground">
-                  The Portuguese Work Permit visa is a type of residence visa that allows non-EU/EEA citizens to live and work in Portugal based on employment with a Portuguese company. 
+                  The Portuguese Work Permit visa is a type of residence visa that allows non-EU/EEA citizens to live and work in Portugal based on employment with a Portuguese company.
                 </p>
                 <p className="mb-4 text-muted-foreground">
                   This visa is suitable for professionals who have received a formal job offer from a Portuguese employer and want to relocate to Portugal for work purposes.
@@ -56,6 +91,16 @@ const WorkPermit = () => {
                 <p className="mb-4 text-muted-foreground">
                   After holding a valid work permit for a period of time, you may become eligible to apply for permanent residency and eventually, Portuguese citizenship.
                 </p>
+                <div 
+                  className="rounded-lg overflow-hidden mt-6"
+                  style={{ height: "200px" }}
+                >
+                  <img 
+                    src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2670&auto=format&fit=crop" 
+                    alt="Professional working" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
               <div>
                 <Card className="h-full">
@@ -175,6 +220,21 @@ const WorkPermit = () => {
           </TabsContent>
 
           <TabsContent value="process" className="mt-8">
+            <div 
+              className="bg-cover bg-center rounded-xl overflow-hidden mb-8 relative"
+              style={{ 
+                height: "250px",
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2670&auto=format&fit=crop')` 
+              }}
+            >
+              <div className="absolute inset-0 flex items-center justify-center">
+                <h2 className="text-3xl font-bold text-white">Our Document Assistance</h2>
+              </div>
+            </div>
+            <p className="text-lg text-center max-w-3xl mx-auto mb-12">
+              We help gather and organize the required documentation, ensure your application is accurately prepared, 
+              and address any challenges that may arise during the process.
+            </p>
             <h2 className="text-2xl font-bold mb-6">Application Process</h2>
             <div className="space-y-8">
               <div className="flex flex-col md:flex-row gap-6">
@@ -280,6 +340,20 @@ const WorkPermit = () => {
           </TabsContent>
         </Tabs>
       </main>
+
+      <section className="bg-gradient-to-r from-purple-900 to-indigo-800 text-white py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6">Ready to Start Your Work Permit Journey?</h2>
+            <p className="text-lg mb-8">
+              Our knowledgeable team is ready to guide you through every step of the process—from the first consultation to receiving final approval.
+            </p>
+            <Button asChild size="lg" className="bg-white text-purple-900 hover:bg-white/90">
+              <Link to="/consultation">Schedule Your Free Consultation</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>
