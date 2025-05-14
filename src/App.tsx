@@ -23,6 +23,7 @@ import Applications from "./pages/Applications";
 // Visa pages
 import WorkPermit from "./pages/visas/WorkPermit";
 import D7Visa from "./pages/visas/D7Visa";
+import StudentVisa from "./pages/visas/StudentVisa";
 
 // Admin pages
 import UsersManagement from "./pages/admin/UsersManagement";
@@ -70,6 +71,7 @@ const App = () => (
               {/* Visa routes */}
               <Route path="/visas/work-permit" element={<WorkPermit />} />
               <Route path="/visas/d7" element={<D7Visa />} />
+              <Route path="/visas/student" element={<StudentVisa />} />
               
               {/* Admin routes */}
               <Route path="/admin" element={
