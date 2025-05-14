@@ -20,6 +20,9 @@ import UserProfile from "./pages/UserProfile";
 import ApplicationForm from "./pages/ApplicationForm";
 import Applications from "./pages/Applications";
 
+// Visa pages
+import WorkPermit from "./pages/visas/WorkPermit";
+
 // Admin pages
 import UsersManagement from "./pages/admin/UsersManagement";
 import ApplicationsManagement from "./pages/admin/ApplicationsManagement";
@@ -62,6 +65,9 @@ const App = () => (
                   <ApplicationForm />
                 </ProtectedRoute>
               } />
+              
+              {/* Visa routes */}
+              <Route path="/visas/work-permit" element={<WorkPermit />} />
               
               {/* Admin routes */}
               <Route path="/admin" element={

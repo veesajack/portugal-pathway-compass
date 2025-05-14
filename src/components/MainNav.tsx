@@ -51,6 +51,9 @@ const MainNav = () => {
               <ListItem to="/visas/student" title="Student Visa">
                 For international students enrolled in Portuguese education
               </ListItem>
+              <ListItem to="/visas/work-permit" title="Work Permit">
+                For those with a job offer from a Portuguese employer
+              </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
