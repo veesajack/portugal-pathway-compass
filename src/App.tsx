@@ -21,6 +21,7 @@ import ApplicationForm from "./pages/ApplicationForm";
 import Applications from "./pages/Applications";
 import FAQ from "./pages/resources/FAQ";
 import ImmigrationGuides from "./pages/resources/ImmigrationGuides";
+import About from "./pages/About";
 
 // Visa pages
 import WorkPermit from "./pages/visas/WorkPermit";
@@ -51,6 +52,7 @@ const App = () => (
               <Route path="/tools/document-checklist" element={<DocumentChecklist />} />
               <Route path="/login" element={<Login />} />
               <Route path="/consultation" element={<Consultation />} />
+              <Route path="/about" element={<About />} />
               <Route path="/dashboard" element={
                 <ProtectedRoute>
                   <Dashboard />
