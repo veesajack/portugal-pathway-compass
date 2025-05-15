@@ -24,6 +24,8 @@ import Applications from "./pages/Applications";
 import WorkPermit from "./pages/visas/WorkPermit";
 import D7Visa from "./pages/visas/D7Visa";
 import StudentVisa from "./pages/visas/StudentVisa";
+import GoldenVisa from "./pages/visas/GoldenVisa";
+import DigitalNomadVisa from "./pages/visas/DigitalNomadVisa";
 
 // Admin pages
 import UsersManagement from "./pages/admin/UsersManagement";
@@ -72,6 +74,8 @@ const App = () => (
               <Route path="/visas/work-permit" element={<WorkPermit />} />
               <Route path="/visas/d7" element={<D7Visa />} />
               <Route path="/visas/student" element={<StudentVisa />} />
+              <Route path="/visas/golden" element={<GoldenVisa />} />
+              <Route path="/visas/digital-nomad" element={<DigitalNomadVisa />} />
               
               {/* Admin routes */}
               <Route path="/admin" element={
