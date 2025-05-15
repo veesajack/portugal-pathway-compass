@@ -19,6 +19,8 @@ import Consultation from "./pages/Consultation";
 import UserProfile from "./pages/UserProfile";
 import ApplicationForm from "./pages/ApplicationForm";
 import Applications from "./pages/Applications";
+import FAQ from "./pages/resources/FAQ";
+import ImmigrationGuides from "./pages/resources/ImmigrationGuides";
 
 // Visa pages
 import WorkPermit from "./pages/visas/WorkPermit";
@@ -69,6 +71,10 @@ const App = () => (
                   <ApplicationForm />
                 </ProtectedRoute>
               } />
+              
+              {/* Resource pages */}
+              <Route path="/resources/faq" element={<FAQ />} />
+              <Route path="/resources/guides" element={<ImmigrationGuides />} />
               
               {/* Visa routes */}
               <Route path="/visas/work-permit" element={<WorkPermit />} />
