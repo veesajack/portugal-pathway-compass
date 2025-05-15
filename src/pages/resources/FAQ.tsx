@@ -12,7 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { MessageSquareQuestion, HelpCircle, FileText } from "lucide-react";
+import { MessageSquare, HelpCircle, FileText } from "lucide-react";
 
 const FAQPage = () => {
   const [activeTab, setActiveTab] = useState("general");
@@ -44,7 +44,7 @@ const FAQPage = () => {
                 <div className="lg:w-1/2 flex justify-end">
                   <div className="bg-white/10 backdrop-blur p-6 rounded-lg border border-white/20 w-full max-w-md">
                     <div className="flex items-center gap-4 mb-4">
-                      <MessageSquareQuestion className="text-white h-8 w-8" />
+                      <MessageSquare className="text-white h-8 w-8" />
                       <h2 className="text-xl font-medium text-white">Need more help?</h2>
                     </div>
                     <p className="text-white/80 mb-4">
