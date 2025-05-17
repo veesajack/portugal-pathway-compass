@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -12,116 +12,281 @@ import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 const VisaEligibilityChecker = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
-  const [answers, setAnswers] = useState({
-    purpose: '',
-    duration: '',
-    income: '',
-    investment: '',
-    employment: '',
-  });
+  const [selectedVisa, setSelectedVisa] = useState<string | null>(null);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
   const [result, setResult] = useState<string | null>(null);
+  const [currentQuestions, setCurrentQuestions] = useState<any[]>([]);
 
-  const questions = [
-    {
-      id: 'purpose',
-      question: 'What is your primary purpose for moving to Portugal?',
-      options: [
-        { value: 'retirement', label: 'Retirement' },
-        { value: 'work', label: 'Work' },
-        { value: 'study', label: 'Study' },
-        { value: 'investment', label: 'Investment' },
-        { value: 'digital_nomad', label: 'Remote Work/Digital Nomad' },
-      ],
-    },
-    {
-      id: 'duration',
-      question: 'How long do you plan to stay in Portugal?',
-      options: [
-        { value: 'less_than_1_year', label: 'Less than 1 year' },
-        { value: '1_to_5_years', label: '1 to 5 years' },
-        { value: 'more_than_5_years', label: 'More than 5 years' },
-        { value: 'permanent', label: 'Permanently (seeking citizenship)' },
-      ],
-    },
-    {
-      id: 'income',
-      question: 'Do you have a stable passive income source?',
-      options: [
-        { value: 'yes_high', label: 'Yes, more than €10,000/month' },
-        { value: 'yes_medium', label: 'Yes, €2,000 to €10,000/month' },
-        { value: 'yes_low', label: 'Yes, less than €2,000/month' },
-        { value: 'no', label: 'No passive income' },
-      ],
-    },
-    {
-      id: 'investment',
-      question: 'Are you planning to invest in Portugal?',
-      options: [
-        { value: 'real_estate_high', label: 'Yes, in real estate (over €500,000)' },
-        { value: 'real_estate_low', label: 'Yes, in real estate (less than €500,000)' },
-        { value: 'business', label: 'Yes, in a business or startup' },
-        { value: 'no', label: 'No investment plans' },
-      ],
-    },
-    {
-      id: 'employment',
-      question: 'What is your employment situation?',
-      options: [
-        { value: 'employed_portugal', label: 'Job offer from a Portuguese company' },
-        { value: 'remote_work', label: 'Remote work for a non-Portuguese company' },
-        { value: 'self_employed', label: 'Self-employed/Freelancer' },
-        { value: 'student', label: 'Student (or planning to study)' },
-        { value: 'not_employed', label: 'Not employed/Retired' },
-      ],
-    },
+  // First step - select visa type
+  const visaTypes = [
+    { value: 'retirement', label: 'Retirement / Passive Income' },
+    { value: 'work', label: 'Work' },
+    { value: 'study', label: 'Study' },
+    { value: 'investment', label: 'Investment' },
+    { value: 'digital_nomad', label: 'Remote Work/Digital Nomad' },
   ];
+  
+  // Question sets for each visa type
+  const questionsByVisaType: Record<string, any[]> = {
+    retirement: [
+      {
+        id: 'passive_income',
+        question: 'Do you have a stable passive income source?',
+        options: [
+          { value: 'yes_high', label: 'Yes, more than €10,000/month' },
+          { value: 'yes_medium', label: 'Yes, €2,000 to €10,000/month' },
+          { value: 'yes_low', label: 'Yes, less than €2,000/month' },
+          { value: 'no', label: 'No passive income' },
+        ],
+      },
+      {
+        id: 'assets',
+        question: 'Do you have significant assets or savings?',
+        options: [
+          { value: 'high', label: 'Yes, over €100,000' },
+          { value: 'medium', label: 'Yes, between €50,000 and €100,000' },
+          { value: 'low', label: 'Yes, less than €50,000' },
+          { value: 'no', label: 'No significant assets' },
+        ],
+      },
+      {
+        id: 'duration',
+        question: 'How long do you plan to stay in Portugal?',
+        options: [
+          { value: 'short', label: 'Less than 1 year' },
+          { value: 'medium', label: '1 to 5 years' },
+          { value: 'long', label: 'More than 5 years' },
+          { value: 'permanent', label: 'Permanently (seeking citizenship)' },
+        ],
+      },
+    ],
+    work: [
+      {
+        id: 'job_offer',
+        question: 'Do you have a job offer from a Portuguese company?',
+        options: [
+          { value: 'yes_permanent', label: 'Yes, permanent position' },
+          { value: 'yes_temporary', label: 'Yes, temporary/contract position' },
+          { value: 'in_process', label: 'In the process of getting an offer' },
+          { value: 'no', label: 'No job offer yet' },
+        ],
+      },
+      {
+        id: 'qualification',
+        question: 'What is your highest qualification level?',
+        options: [
+          { value: 'phd', label: 'PhD or Doctoral degree' },
+          { value: 'masters', label: 'Master's degree' },
+          { value: 'bachelors', label: 'Bachelor's degree' },
+          { value: 'high_school', label: 'High school diploma or below' },
+        ],
+      },
+      {
+        id: 'industry',
+        question: 'Which industry do you work in?',
+        options: [
+          { value: 'tech', label: 'Technology & IT' },
+          { value: 'healthcare', label: 'Healthcare & Life Sciences' },
+          { value: 'education', label: 'Education & Research' },
+          { value: 'service', label: 'Service industry' },
+          { value: 'other', label: 'Other industry' },
+        ],
+      },
+    ],
+    study: [
+      {
+        id: 'admission',
+        question: 'Have you been admitted to a Portuguese educational institution?',
+        options: [
+          { value: 'yes_university', label: 'Yes, to a university' },
+          { value: 'yes_language', label: 'Yes, to a language school' },
+          { value: 'yes_vocational', label: 'Yes, to a vocational school' },
+          { value: 'no', label: 'Not yet admitted' },
+        ],
+      },
+      {
+        id: 'program_duration',
+        question: 'How long is your study program?',
+        options: [
+          { value: 'short', label: 'Less than 1 year' },
+          { value: 'medium', label: '1 to 3 years' },
+          { value: 'long', label: 'More than 3 years' },
+        ],
+      },
+      {
+        id: 'financial_support',
+        question: 'How will your studies be financially supported?',
+        options: [
+          { value: 'self', label: 'Self-financed' },
+          { value: 'scholarship', label: 'Scholarship' },
+          { value: 'family', label: 'Family support' },
+          { value: 'loan', label: 'Student loan' },
+        ],
+      },
+    ],
+    investment: [
+      {
+        id: 'investment_type',
+        question: 'What type of investment are you planning to make?',
+        options: [
+          { value: 'real_estate_high', label: 'Real estate (over €500,000)' },
+          { value: 'real_estate_low', label: 'Real estate (€280,000 - €500,000)' },
+          { value: 'business', label: 'Business creation (minimum €500,000)' },
+          { value: 'capital_transfer', label: 'Capital transfer (minimum €1,500,000)' },
+          { value: 'research', label: 'Research or cultural support (minimum €250,000)' },
+        ],
+      },
+      {
+        id: 'timeline',
+        question: 'When are you planning to make your investment?',
+        options: [
+          { value: 'immediate', label: 'Immediately' },
+          { value: 'six_months', label: 'Within 6 months' },
+          { value: 'year', label: 'Within a year' },
+          { value: 'undecided', label: 'Still undecided' },
+        ],
+      },
+      {
+        id: 'citizenship',
+        question: 'Are you interested in Portuguese citizenship through investment?',
+        options: [
+          { value: 'yes', label: 'Yes, it's a primary goal' },
+          { value: 'maybe', label: 'Yes, but it's not the main reason' },
+          { value: 'no', label: 'No, just interested in residency' },
+        ],
+      },
+    ],
+    digital_nomad: [
+      {
+        id: 'employment',
+        question: 'What is your current employment status?',
+        options: [
+          { value: 'remote_employee', label: 'Remote employee for a foreign company' },
+          { value: 'freelancer', label: 'Freelancer with foreign clients' },
+          { value: 'entrepreneur', label: 'Online business owner' },
+          { value: 'mixed', label: 'Mix of different remote income sources' },
+        ],
+      },
+      {
+        id: 'income_level',
+        question: 'What is your average monthly income?',
+        options: [
+          { value: 'high', label: 'More than €4,000/month' },
+          { value: 'medium', label: 'Between €2,800 and €4,000/month' },
+          { value: 'low', label: 'Less than €2,800/month' },
+        ],
+      },
+      {
+        id: 'stay_duration',
+        question: 'How long do you plan to stay in Portugal?',
+        options: [
+          { value: 'short', label: 'Less than 6 months' },
+          { value: 'medium', label: '6 months to 1 year' },
+          { value: 'long', label: '1 to 2 years' },
+          { value: 'permanent', label: 'More than 2 years' },
+        ],
+      },
+    ],
+  };
+
+  useEffect(() => {
+    if (selectedVisa) {
+      setCurrentQuestions(questionsByVisaType[selectedVisa]);
+    }
+  }, [selectedVisa]);
+
+  const handleVisaSelect = (value: string) => {
+    setSelectedVisa(value);
+    setAnswers({});
+    setCurrentStep(1);
+  };
 
   const handleAnswer = (id: string, value: string) => {
     setAnswers(prev => ({ ...prev, [id]: value }));
   };
 
   const handleNext = () => {
-    if (currentStep < questions.length - 1) {
+    if (!selectedVisa) {
+      return;
+    }
+    
+    if (currentStep < currentQuestions.length) {
       setCurrentStep(prev => prev + 1);
     } else {
-      // Determine visa recommendation based on answers
       determineVisaRecommendation();
     }
   };
 
   const handleBack = () => {
-    if (currentStep > 0) {
+    if (currentStep > 1) {
       setCurrentStep(prev => prev - 1);
+    } else if (currentStep === 1) {
+      // Go back to visa type selection
+      setSelectedVisa(null);
+      setCurrentStep(0);
     }
   };
 
   const determineVisaRecommendation = () => {
-    // Simple logic to determine the recommended visa
-    if (answers.purpose === 'retirement' || (answers.income.includes('yes') && answers.purpose !== 'work')) {
-      setResult('d7');
-    } else if (answers.purpose === 'investment' || answers.investment.includes('real_estate_high') || answers.investment.includes('business')) {
-      setResult('golden');
-    } else if (answers.purpose === 'study' || answers.employment === 'student') {
-      setResult('student');
-    } else if (answers.purpose === 'digital_nomad' || answers.employment === 'remote_work') {
-      setResult('digital_nomad');
-    } else if (answers.employment === 'employed_portugal') {
-      setResult('work');
-    } else {
-      // Default recommendation if no clear match
-      setResult('undetermined');
+    if (!selectedVisa) return;
+
+    // Logic to determine the best visa based on answers and selected visa type
+    switch (selectedVisa) {
+      case 'retirement':
+        if (answers.passive_income?.includes('yes_medium') || answers.passive_income?.includes('yes_high')) {
+          setResult('d7');
+        } else if (answers.assets?.includes('high')) {
+          setResult('d7');
+        } else {
+          setResult('undetermined');
+        }
+        break;
+      
+      case 'work':
+        if (answers.job_offer?.includes('yes')) {
+          setResult('work');
+        } else if (answers.qualification === 'phd' || answers.qualification === 'masters') {
+          setResult('highly_qualified');
+        } else {
+          setResult('undetermined');
+        }
+        break;
+      
+      case 'study':
+        if (answers.admission?.includes('yes')) {
+          setResult('student');
+        } else {
+          setResult('undetermined');
+        }
+        break;
+      
+      case 'investment':
+        if (answers.investment_type?.includes('real_estate')) {
+          setResult('golden');
+        } else if (answers.investment_type) {
+          setResult('golden');
+        } else {
+          setResult('undetermined');
+        }
+        break;
+      
+      case 'digital_nomad':
+        if (answers.income_level === 'high' || answers.income_level === 'medium') {
+          setResult('digital_nomad');
+        } else {
+          setResult('undetermined');
+        }
+        break;
+      
+      default:
+        setResult('undetermined');
     }
   };
 
   const resetQuiz = () => {
     setCurrentStep(0);
-    setAnswers({
-      purpose: '',
-      duration: '',
-      income: '',
-      investment: '',
-      employment: '',
-    });
+    setSelectedVisa(null);
+    setAnswers({});
     setResult(null);
   };
 
@@ -179,6 +344,17 @@ const VisaEligibilityChecker = () => {
           'Health insurance valid in Portugal',
           'Clean criminal record',
           'Proof of accommodation in Portugal',
+        ],
+        url: '/visas/work'
+      },
+      highly_qualified: {
+        title: 'Highly Qualified Activity Visa',
+        description: 'Based on your qualifications, the Highly Qualified Activity Visa might be suitable. This visa is for specialized professionals in scientific, technical, or cultural fields.',
+        requirements: [
+          'Proof of high qualification (Masters degree or higher)',
+          'Job offer or contract for a highly qualified position',
+          'Health insurance valid in Portugal',
+          'Clean criminal record',
         ],
         url: '/visas/work'
       },
@@ -244,27 +420,48 @@ const VisaEligibilityChecker = () => {
             <Card className="w-full animate-fade-in">
               <CardHeader>
                 <CardTitle>
-                  {questions[currentStep].question}
+                  {currentStep === 0 
+                    ? "What is your primary purpose for moving to Portugal?" 
+                    : currentQuestions[currentStep - 1]?.question}
                 </CardTitle>
-                <CardDescription>
-                  {`Question ${currentStep + 1} of ${questions.length}`}
-                </CardDescription>
+                {currentStep !== 0 && (
+                  <CardDescription>
+                    {`Question ${currentStep} of ${currentQuestions.length}`}
+                  </CardDescription>
+                )}
               </CardHeader>
               <CardContent>
-                <RadioGroup
-                  value={answers[questions[currentStep].id as keyof typeof answers]}
-                  onValueChange={(value) => handleAnswer(questions[currentStep].id, value)}
-                  className="space-y-3"
-                >
-                  {questions[currentStep].options.map((option) => (
-                    <div key={option.value} className="flex items-center space-x-2 rounded-md border p-3 cursor-pointer hover:bg-secondary transition-colors">
-                      <RadioGroupItem value={option.value} id={option.value} />
-                      <Label htmlFor={option.value} className="flex-grow cursor-pointer">
-                        {option.label}
-                      </Label>
-                    </div>
-                  ))}
-                </RadioGroup>
+                {currentStep === 0 ? (
+                  <RadioGroup
+                    value={selectedVisa || ''}
+                    onValueChange={handleVisaSelect}
+                    className="space-y-3"
+                  >
+                    {visaTypes.map((option) => (
+                      <div key={option.value} className="flex items-center space-x-2 rounded-md border p-3 cursor-pointer hover:bg-secondary transition-colors">
+                        <RadioGroupItem value={option.value} id={option.value} />
+                        <Label htmlFor={option.value} className="flex-grow cursor-pointer">
+                          {option.label}
+                        </Label>
+                      </div>
+                    ))}
+                  </RadioGroup>
+                ) : (
+                  <RadioGroup
+                    value={answers[currentQuestions[currentStep - 1]?.id] || ''}
+                    onValueChange={(value) => handleAnswer(currentQuestions[currentStep - 1]?.id, value)}
+                    className="space-y-3"
+                  >
+                    {currentQuestions[currentStep - 1]?.options.map((option: any) => (
+                      <div key={option.value} className="flex items-center space-x-2 rounded-md border p-3 cursor-pointer hover:bg-secondary transition-colors">
+                        <RadioGroupItem value={option.value} id={option.value} />
+                        <Label htmlFor={option.value} className="flex-grow cursor-pointer">
+                          {option.label}
+                        </Label>
+                      </div>
+                    ))}
+                  </RadioGroup>
+                )}
               </CardContent>
               <CardFooter className="flex justify-between">
                 <Button 
@@ -274,12 +471,21 @@ const VisaEligibilityChecker = () => {
                 >
                   <ArrowLeft className="mr-2 h-4 w-4" /> Back
                 </Button>
-                <Button 
-                  onClick={handleNext}
-                  disabled={!answers[questions[currentStep].id as keyof typeof answers]}
-                >
-                  {currentStep < questions.length - 1 ? 'Next' : 'See Results'} <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                {currentStep === 0 ? (
+                  <Button 
+                    onClick={() => handleNext()}
+                    disabled={!selectedVisa}
+                  >
+                    Next <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                ) : (
+                  <Button 
+                    onClick={handleNext}
+                    disabled={!currentQuestions[currentStep - 1] || !answers[currentQuestions[currentStep - 1]?.id]}
+                  >
+                    {currentStep < currentQuestions.length ? 'Next' : 'See Results'} <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                )}
               </CardFooter>
             </Card>
           )}
