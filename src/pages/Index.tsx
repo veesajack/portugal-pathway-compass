@@ -15,25 +15,29 @@ const Index = () => {
       title: 'Visa Eligibility Checker',
       description: 'Answer a few questions to find the right visa type for your situation and goals.',
       icon: <CheckCircle2 className="h-6 w-6" />,
-      imageSrc: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1470&auto=format&fit=crop'
+      imageSrc: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1470&auto=format&fit=crop',
+      link: '/tools/eligibility-checker'
     },
     {
       title: 'Document Checklist Generator',
       description: 'Get a personalized list of all required documents for your specific visa application.',
       icon: <FileCheck className="h-6 w-6" />,
-      imageSrc: 'https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=1470&auto=format&fit=crop'
+      imageSrc: 'https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=1470&auto=format&fit=crop',
+      link: '/tools/document-checklist'
     },
     {
       title: 'Application Tracking',
       description: 'Monitor the status of your application with regular updates and notifications.',
       icon: <Compass className="h-6 w-6" />,
-      imageSrc: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1470&auto=format&fit=crop'
+      imageSrc: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1470&auto=format&fit=crop',
+      link: '/applications'
     },
     {
       title: 'Expert Consultation',
       description: 'Book one-on-one sessions with immigration experts for personalized guidance.',
       icon: <Calendar className="h-6 w-6" />,
-      imageSrc: 'https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=1470&auto=format&fit=crop'
+      imageSrc: 'https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=1470&auto=format&fit=crop',
+      link: '/consultation'
     }
   ];
 
@@ -97,19 +101,20 @@ const Index = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {features.map((feature, index) => (
-                <FeatureCard 
-                  key={index}
-                  title={feature.title}
-                  description={feature.description}
-                  icon={feature.icon}
-                  imageSrc={feature.imageSrc}
-                />
+                <Link to={feature.link} key={index}>
+                  <FeatureCard 
+                    title={feature.title}
+                    description={feature.description}
+                    icon={feature.icon}
+                    imageSrc={feature.imageSrc}
+                  />
+                </Link>
               ))}
             </div>
             
             <div className="text-center mt-12">
               <Button asChild size="lg" className="px-6">
-                <Link to="/tools" className="flex items-center">
+                <Link to="/tools/eligibility-checker" className="flex items-center">
                   Explore Our Tools <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -145,7 +150,7 @@ const Index = () => {
             
             <div className="text-center mt-12">
               <Button asChild size="lg" variant="outline" className="border-portugal-blue text-portugal-blue hover:bg-portugal-blue/5 px-6">
-                <Link to="/visas" className="flex items-center">
+                <Link to="/visas/d7" className="flex items-center">
                   Compare All Visa Types <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
