@@ -67,15 +67,46 @@ const Navbar = () => {
                 <Link to="/" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
                   Home
                 </Link>
-                <Link to="/visas" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
-                  Visas
-                </Link>
-                <Link to="/tools" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
-                  Tools
-                </Link>
-                <Link to="/resources" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
-                  Resources
-                </Link>
+                
+                {/* Visas Mobile Menu - Expanded */}
+                <div className="border-l-2 border-muted pl-4 py-2 space-y-3">
+                  <Link to="/visas/d7" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                    D7 Visa
+                  </Link>
+                  <Link to="/visas/golden" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                    Golden Visa
+                  </Link>
+                  <Link to="/visas/digital-nomad" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                    Digital Nomad Visa
+                  </Link>
+                  <Link to="/visas/student" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                    Student Visa
+                  </Link>
+                  <Link to="/visas/work-permit" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                    Work Permit
+                  </Link>
+                </div>
+                
+                {/* Tools Mobile Menu - Expanded */}
+                <div className="border-l-2 border-muted pl-4 py-2 space-y-3">
+                  <Link to="/tools/eligibility-checker" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                    Visa Eligibility Checker
+                  </Link>
+                  <Link to="/tools/document-checklist" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                    Document Checklist
+                  </Link>
+                </div>
+
+                {/* Resources Mobile Menu - Expanded */}
+                <div className="border-l-2 border-muted pl-4 py-2 space-y-3">
+                  <Link to="/resources/guides" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                    Immigration Guides
+                  </Link>
+                  <Link to="/resources/faq" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                    FAQ
+                  </Link>
+                </div>
+                
                 <Link to="/consultation" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
                   Consultation
                 </Link>
