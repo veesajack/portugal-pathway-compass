@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { toast } from '@/hooks/use-toast';
 
 const VisaEligibilityChecker = () => {
   const navigate = useNavigate();
@@ -199,6 +200,15 @@ const VisaEligibilityChecker = () => {
     setSelectedVisa(value);
     setAnswers({});
     setCurrentStep(1);
+    toast({
+      title: `${getVisaTypeLabel(value)} selected`,
+      description: "Please answer the following questions to check your eligibility",
+    });
+  };
+
+  const getVisaTypeLabel = (value: string): string => {
+    const visaType = visaTypes.find(type => type.value === value);
+    return visaType ? visaType.label : 'Unknown';
   };
 
   const handleAnswer = (id: string, value: string) => {
