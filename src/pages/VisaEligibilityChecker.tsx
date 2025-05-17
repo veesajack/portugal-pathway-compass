@@ -77,8 +77,8 @@ const VisaEligibilityChecker = () => {
         question: 'What is your highest qualification level?',
         options: [
           { value: 'phd', label: 'PhD or Doctoral degree' },
-          { value: 'masters', label: 'Master's degree' },
-          { value: 'bachelors', label: 'Bachelor's degree' },
+          { value: 'masters', label: "Master's degree" },
+          { value: 'bachelors', label: "Bachelor's degree" },
           { value: 'high_school', label: 'High school diploma or below' },
         ],
       },
@@ -151,8 +151,8 @@ const VisaEligibilityChecker = () => {
         id: 'citizenship',
         question: 'Are you interested in Portuguese citizenship through investment?',
         options: [
-          { value: 'yes', label: 'Yes, it's a primary goal' },
-          { value: 'maybe', label: 'Yes, but it's not the main reason' },
+          { value: 'yes', label: "Yes, it's a primary goal" },
+          { value: 'maybe', label: "Yes, but it's not the main reason" },
           { value: 'no', label: 'No, just interested in residency' },
         ],
       },
