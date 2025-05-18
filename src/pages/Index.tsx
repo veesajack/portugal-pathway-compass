@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -71,10 +72,10 @@ const Index = () => {
       imageSrc: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=1470&auto=format&fit=crop'
     },
     {
-      title: 'Work Visa',
+      title: 'Work Permit',
       description: 'For individuals with job offers from Portuguese companies.',
       icon: <Briefcase className="h-6 w-6" />,
-      link: '/visas/work',
+      link: '/visas/work-permit',
       imageSrc: 'https://images.unsplash.com/photo-1541185934-01b600ea069c?q=80&w=1470&auto=format&fit=crop'
     }
   ];
@@ -150,7 +151,7 @@ const Index = () => {
             
             <div className="text-center mt-12">
               <Button asChild size="lg" variant="outline" className="border-portugal-blue text-portugal-blue hover:bg-portugal-blue/5 px-6">
-                <Link to="/visas/d7" className="flex items-center">
+                <Link to="/visas" className="flex items-center">
                   Compare All Visa Types <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
