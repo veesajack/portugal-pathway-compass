@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Instagram, Twitter, Facebook, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -41,7 +42,7 @@ const Footer = () => {
               <li><Link to="/visas/d7" className="text-muted-foreground hover:text-foreground transition-colors animated-link">D7 Visa</Link></li>
               <li><Link to="/visas/golden" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Golden Visa</Link></li>
               <li><Link to="/visas/student" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Student Visa</Link></li>
-              <li><Link to="/visas/work" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Work Visa</Link></li>
+              <li><Link to="/visas/work-permit" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Work Permit</Link></li>
               <li><Link to="/visas/digital-nomad" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Digital Nomad Visa</Link></li>
             </ul>
           </div>
@@ -52,7 +53,16 @@ const Footer = () => {
               <li><Link to="/tools/eligibility-checker" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Visa Eligibility Checker</Link></li>
               <li><Link to="/tools/document-checklist" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Document Checklist</Link></li>
               <li><Link to="/consultation" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Book a Consultation</Link></li>
-              <li><Link to="/contact" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Contact Us</Link></li>
+              <li>
+                <a 
+                  href="https://wa.me/+351936329523?text=Hello,%20I'm%20interested%20in%20Portugal%20immigration%20assistance." 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors animated-link"
+                >
+                  Contact Us
+                </a>
+              </li>
               <li><Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors animated-link">About Us</Link></li>
             </ul>
           </div>
