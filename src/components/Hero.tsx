@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import WhatsAppButton from './WhatsAppButton';
 
 const Hero = () => {
   return (
@@ -19,11 +20,18 @@ const Hero = () => {
             <Button asChild size="lg" variant="secondary" className="text-primary font-medium">
               <Link to="/tools/eligibility-checker">Check Your Eligibility</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10">
-              <Link to="/visas" className="flex items-center">
-                Explore Visa Options <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+            <Button asChild size="lg" variant="secondary" className="text-primary font-medium">
+              <Link to="/consultation">Book Consultation</Link>
             </Button>
+          </div>
+          <div className="mt-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <WhatsAppButton 
+              message="Hello, I'd like to learn more about relocating to Portugal."
+              variant="outline"
+              className="bg-transparent border-white text-white hover:bg-white/10"
+            >
+              Chat with us on WhatsApp
+            </WhatsAppButton>
           </div>
         </div>
       </div>
