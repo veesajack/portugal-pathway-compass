@@ -10,6 +10,7 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import AdminProtectedRoute from "@/components/AdminProtectedRoute";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import Visas from "./pages/Visas";
 import VisaEligibilityChecker from "./pages/VisaEligibilityChecker";
 import DocumentChecklist from "./pages/DocumentChecklist";
 import Login from "./pages/Login";
@@ -53,6 +54,7 @@ const App = () => (
               <Route path="/login" element={<Login />} />
               <Route path="/consultation" element={<Consultation />} />
               <Route path="/about" element={<About />} />
+              <Route path="/visas" element={<Visas />} />
               <Route path="/dashboard" element={
                 <ProtectedRoute>
                   <Dashboard />

@@ -68,6 +68,11 @@ const Navbar = () => {
                   Home
                 </Link>
                 
+                {/* Visas Section Header with Link to Overview */}
+                <Link to="/visas" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  All Visa Types
+                </Link>
+                
                 {/* Visas Mobile Menu - Expanded */}
                 <div className="border-l-2 border-muted pl-4 py-2 space-y-3">
                   <Link to="/visas/d7" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
