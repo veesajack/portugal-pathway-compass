@@ -9,11 +9,14 @@ const Hero = () => {
     <div className="hero-gradient text-white py-20 md:py-32">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-block py-2 px-4 mb-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full animate-fade-in">
+          <a 
+            href="/visas" 
+            className="inline-block py-2 px-4 mb-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full animate-fade-in hover:bg-white/30 transition-colors cursor-pointer"
+          >
             <span className="text-base font-semibold text-white">
               Your Portugal Journey Starts Here
             </span>
-          </div>
+          </a>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
             Navigate Your Path to Portugal
           </h1>

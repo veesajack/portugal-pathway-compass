@@ -23,9 +23,12 @@ const HeroSection = () => {
       <div className="container relative z-30 mx-auto px-4 py-24 md:py-32 lg:py-40">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-12 items-center">
           <div className="space-y-6 text-left md:col-span-4">
-            <span className="inline-block py-2 px-4 bg-white/30 backdrop-blur-md border border-white/40 rounded-full text-base font-semibold text-white shadow-lg">
+            <a 
+              href="/visas" 
+              className="inline-block py-2 px-4 bg-white/30 backdrop-blur-md border border-white/40 rounded-full text-base font-semibold text-white shadow-lg hover:bg-white/40 transition-colors cursor-pointer"
+            >
               Your Portugal Journey Starts Here
-            </span>
+            </a>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
               Simplify Your Path to Portugal Residency
             </h1>
