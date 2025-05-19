@@ -26,8 +26,8 @@ const MainNav = () => {
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <Link
-                    to="/visas"
+                  <a
+                    href="/visas"
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-portugal-blue/20 to-portugal-blue/40 p-6 no-underline outline-none focus:shadow-md"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium text-portugal-blue">
@@ -36,22 +36,22 @@ const MainNav = () => {
                     <p className="text-sm leading-tight text-foreground/80">
                       Find the right visa pathway for your journey to Portugal
                     </p>
-                  </Link>
+                  </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem to="/visas/d7" title="D7 Passive Income">
+              <ListItem href="/visas/d7" title="D7 Passive Income">
                 For retirees and those with regular passive income
               </ListItem>
-              <ListItem to="/visas/golden" title="Golden Visa">
+              <ListItem href="/visas/golden" title="Golden Visa">
                 Investment-based residency program
               </ListItem>
-              <ListItem to="/visas/digital-nomad" title="Digital Nomad">
+              <ListItem href="/visas/digital-nomad" title="Digital Nomad">
                 For remote workers and digital professionals
               </ListItem>
-              <ListItem to="/visas/student" title="Student Visa">
+              <ListItem href="/visas/student" title="Student Visa">
                 For international students enrolled in Portuguese education
               </ListItem>
-              <ListItem to="/visas/work-permit" title="Work Permit">
+              <ListItem href="/visas/work-permit" title="Work Permit">
                 For those with a job offer from a Portuguese employer
               </ListItem>
             </ul>
@@ -61,10 +61,10 @@ const MainNav = () => {
           <NavigationMenuTrigger className="text-base font-normal">Tools</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px]">
-              <ListItem to="/tools/eligibility-checker" title="Visa Eligibility Checker">
+              <ListItem href="/tools/eligibility-checker" title="Visa Eligibility Checker">
                 Find the right visa type for your situation and goals
               </ListItem>
-              <ListItem to="/tools/document-checklist" title="Document Checklist">
+              <ListItem href="/tools/document-checklist" title="Document Checklist">
                 Get a personalized list of required documents
               </ListItem>
             </ul>
@@ -74,28 +74,28 @@ const MainNav = () => {
           <NavigationMenuTrigger className="text-base font-normal">Resources</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px]">
-              <ListItem to="/resources/guides" title="Immigration Guides">
+              <ListItem href="/resources/guides" title="Immigration Guides">
                 Step-by-step guides to the immigration process
               </ListItem>
-              <ListItem to="/resources/faq" title="FAQ">
+              <ListItem href="/resources/faq" title="FAQ">
                 Answers to common questions about moving to Portugal
               </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link to="/consultation">
+          <a href="/consultation">
             <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-base font-normal")}>
               Consultation
             </NavigationMenuLink>
-          </Link>
+          </a>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link to="/about">
+          <a href="/about">
             <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-base font-normal")}>
               About
             </NavigationMenuLink>
-          </Link>
+          </a>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
@@ -104,13 +104,13 @@ const MainNav = () => {
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a"> & { to: string; title: string }
->(({ className, title, children, to, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"a"> & { href: string; title: string }
+>(({ className, title, children, href, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
-        <Link
-          to={to}
+        <a
+          href={href}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
@@ -121,7 +121,7 @@ const ListItem = React.forwardRef<
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
-        </Link>
+        </a>
       </NavigationMenuLink>
     </li>
   );

@@ -39,20 +39,20 @@ const Footer = () => {
           <div>
             <h4 className="font-medium text-base mb-4">Visa Types</h4>
             <ul className="space-y-3">
-              <li><Link to="/visas/d7" className="text-muted-foreground hover:text-foreground transition-colors animated-link">D7 Visa</Link></li>
-              <li><Link to="/visas/golden" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Golden Visa</Link></li>
-              <li><Link to="/visas/student" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Student Visa</Link></li>
-              <li><Link to="/visas/work-permit" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Work Permit</Link></li>
-              <li><Link to="/visas/digital-nomad" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Digital Nomad Visa</Link></li>
+              <li><a href="/visas/d7" className="text-muted-foreground hover:text-foreground transition-colors animated-link">D7 Visa</a></li>
+              <li><a href="/visas/golden" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Golden Visa</a></li>
+              <li><a href="/visas/student" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Student Visa</a></li>
+              <li><a href="/visas/work-permit" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Work Permit</a></li>
+              <li><a href="/visas/digital-nomad" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Digital Nomad Visa</a></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-medium text-base mb-4">Quick Links</h4>
             <ul className="space-y-3">
-              <li><Link to="/tools/eligibility-checker" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Visa Eligibility Checker</Link></li>
-              <li><Link to="/tools/document-checklist" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Document Checklist</Link></li>
-              <li><Link to="/consultation" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Book a Consultation</Link></li>
+              <li><a href="/tools/eligibility-checker" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Visa Eligibility Checker</a></li>
+              <li><a href="/tools/document-checklist" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Document Checklist</a></li>
+              <li><a href="/consultation" className="text-muted-foreground hover:text-foreground transition-colors animated-link">Book a Consultation</a></li>
               <li>
                 <a 
                   href="https://wa.me/+351936329523?text=Hello,%20I'm%20interested%20in%20Portugal%20immigration%20assistance." 
@@ -63,7 +63,7 @@ const Footer = () => {
                   Contact Us
                 </a>
               </li>
-              <li><Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors animated-link">About Us</Link></li>
+              <li><a href="/about" className="text-muted-foreground hover:text-foreground transition-colors animated-link">About Us</a></li>
             </ul>
           </div>
         </div>
@@ -73,8 +73,8 @@ const Footer = () => {
             © {currentYear} MusasProsperas. All rights reserved.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <Link to="/privacy" className="text-sm text-muted-foreground hover:text-foreground">Privacy Policy</Link>
-            <Link to="/terms" className="text-sm text-muted-foreground hover:text-foreground">Terms of Service</Link>
+            <a href="/privacy" className="text-sm text-muted-foreground hover:text-foreground">Privacy Policy</a>
+            <a href="/terms" className="text-sm text-muted-foreground hover:text-foreground">Terms of Service</a>
           </div>
         </div>
       </div>

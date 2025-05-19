@@ -16,7 +16,7 @@ interface VisaCardProps {
 
 const VisaCard = ({ title, description, icon, link, color = "bg-card", imageSrc }: VisaCardProps) => {
   return (
-    <Link to={link} className="block h-full">
+    <a href={link} className="block h-full">
       <Card className={`card-hover ${color} border-none overflow-hidden group h-full transition-transform duration-300 hover:scale-[1.02]`}>
         {imageSrc && (
           <div className="relative h-52 overflow-hidden cursor-pointer">
@@ -50,7 +50,7 @@ const VisaCard = ({ title, description, icon, link, color = "bg-card", imageSrc 
           </span>
         </CardFooter>
       </Card>
-    </Link>
+    </a>
   );
 };
 
