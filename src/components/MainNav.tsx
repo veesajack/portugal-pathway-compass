@@ -28,14 +28,20 @@ const MainNav = () => {
                 <NavigationMenuLink asChild>
                   <a
                     href="/visas"
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-portugal-blue/20 to-portugal-blue/40 p-6 no-underline outline-none focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-cover bg-center p-6 no-underline outline-none focus:shadow-md overflow-hidden relative"
+                    style={{ 
+                      backgroundImage: `url('/lovable-uploads/dab6fa77-edc6-46ce-9658-99683bd8a920.png')` 
+                    }}
                   >
-                    <div className="mb-2 mt-4 text-lg font-medium text-portugal-blue">
-                      Explore All Visas
+                    <div className="absolute inset-0 bg-black/30 hover:bg-black/40 transition-colors"></div>
+                    <div className="relative z-10">
+                      <div className="mb-2 mt-4 text-lg font-medium text-white">
+                        Explore All Visas
+                      </div>
+                      <p className="text-sm leading-tight text-white/90">
+                        Find the right visa pathway for your journey to Portugal
+                      </p>
                     </div>
-                    <p className="text-sm leading-tight text-foreground/80">
-                      Find the right visa pathway for your journey to Portugal
-                    </p>
                   </a>
                 </NavigationMenuLink>
               </li>
