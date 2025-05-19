@@ -34,15 +34,20 @@ const HeroSection = () => {
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <Button asChild size="lg" className="bg-white text-portugal-blue hover:bg-white/90">
-                <Link to="/tools/eligibility-checker">
+                <a href="/tools/eligibility-checker">
                   Check Your Eligibility
-                </Link>
+                </a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                <Link to="/consultation" className="flex items-center">
+              <Button 
+                asChild 
+                size="lg" 
+                variant="outline" 
+                className="border-white bg-portugal-blue/90 text-white font-medium hover:bg-portugal-blue hover:text-white"
+              >
+                <a href="/consultation" className="flex items-center">
                   Book Consultation
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+                </a>
               </Button>
               <WhatsAppButton 
                 variant="outline" 

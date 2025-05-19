@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -23,10 +23,10 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center">
-          <Link to="/" className="flex items-center space-x-2">
+          <a href="/" className="flex items-center space-x-2">
             <img src="/logo.svg" alt="MusasProsperas" className="h-8 w-8" />
             <span className="font-medium text-xl">MusasProsperas</span>
-          </Link>
+          </a>
         </div>
 
         {/* Desktop Navigation */}
@@ -38,10 +38,10 @@ const Navbar = () => {
           {user ? (
             <div className="hidden md:flex items-center gap-4">
               <Button asChild variant="ghost" size="sm" className="px-4">
-                <Link to="/dashboard">
+                <a href="/dashboard">
                   <User size={16} className="mr-2" />
                   Dashboard
-                </Link>
+                </a>
               </Button>
               <Button variant="outline" size="sm" onClick={handleSignOut} className="px-4">
                 <LogOut size={16} className="mr-2" />
@@ -49,9 +49,19 @@ const Navbar = () => {
               </Button>
             </div>
           ) : (
-            <Button asChild variant="default" size="sm" className="hidden md:inline-flex px-4">
-              <Link to="/login">Login</Link>
-            </Button>
+            <div className="hidden md:flex items-center gap-2">
+              <Button 
+                asChild 
+                variant="outline" 
+                size="sm" 
+                className="px-4 text-portugal-blue border-portugal-blue hover:bg-portugal-blue/10"
+              >
+                <a href="/consultation">Book Consultation</a>
+              </Button>
+              <Button asChild variant="default" size="sm" className="px-4">
+                <a href="/login">Login</a>
+              </Button>
+            </div>
           )}
 
           {/* Mobile Menu Trigger */}
@@ -64,73 +74,73 @@ const Navbar = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px] pr-0">
               <nav className="flex flex-col gap-4 mt-8">
-                <Link to="/" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                <a href="/" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
                   Home
-                </Link>
+                </a>
                 
                 {/* Visas Section Header with Link to Overview */}
-                <Link to="/visas" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                <a href="/visas" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
                   All Visa Types
-                </Link>
+                </a>
                 
                 {/* Visas Mobile Menu - Expanded */}
                 <div className="border-l-2 border-muted pl-4 py-2 space-y-3">
-                  <Link to="/visas/d7" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  <a href="/visas/d7" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
                     D7 Visa
-                  </Link>
-                  <Link to="/visas/golden" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  </a>
+                  <a href="/visas/golden" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
                     Golden Visa
-                  </Link>
-                  <Link to="/visas/digital-nomad" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  </a>
+                  <a href="/visas/digital-nomad" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
                     Digital Nomad Visa
-                  </Link>
-                  <Link to="/visas/student" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  </a>
+                  <a href="/visas/student" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
                     Student Visa
-                  </Link>
-                  <Link to="/visas/work-permit" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  </a>
+                  <a href="/visas/work-permit" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
                     Work Permit
-                  </Link>
+                  </a>
                 </div>
                 
                 {/* Tools Mobile Menu - Expanded */}
                 <div className="border-l-2 border-muted pl-4 py-2 space-y-3">
-                  <Link to="/tools/eligibility-checker" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  <a href="/tools/eligibility-checker" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
                     Visa Eligibility Checker
-                  </Link>
-                  <Link to="/tools/document-checklist" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  </a>
+                  <a href="/tools/document-checklist" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
                     Document Checklist
-                  </Link>
+                  </a>
                 </div>
 
                 {/* Resources Mobile Menu - Expanded */}
                 <div className="border-l-2 border-muted pl-4 py-2 space-y-3">
-                  <Link to="/resources/guides" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  <a href="/resources/guides" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
                     Immigration Guides
-                  </Link>
-                  <Link to="/resources/faq" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  </a>
+                  <a href="/resources/faq" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
                     FAQ
-                  </Link>
+                  </a>
                 </div>
                 
-                <Link to="/consultation" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
-                  Consultation
-                </Link>
-                <Link to="/about" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                <a href="/consultation" className="px-2 py-1 text-lg font-medium bg-portugal-blue/10 text-portugal-blue font-semibold rounded" onClick={() => setIsOpen(false)}>
+                  Book Consultation
+                </a>
+                <a href="/about" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
                   About
-                </Link>
+                </a>
                 
                 <div className="border-t my-4"></div>
                 
                 {user ? (
                   <>
-                    <Link
-                      to="/dashboard"
+                    <a
+                      href="/dashboard"
                       className="px-2 py-1 text-lg font-medium flex items-center"
                       onClick={() => setIsOpen(false)}
                     >
                       <User size={18} className="mr-2" />
                       Dashboard
-                    </Link>
+                    </a>
                     <Button
                       variant="outline"
                       onClick={handleSignOut}
@@ -142,7 +152,7 @@ const Navbar = () => {
                   </>
                 ) : (
                   <Button asChild className="mt-2" onClick={() => setIsOpen(false)}>
-                    <Link to="/login">Login</Link>
+                    <a href="/login">Login</a>
                   </Button>
                 )}
               </nav>

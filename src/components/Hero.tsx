@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
@@ -18,10 +17,14 @@ const Hero = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <Button asChild size="lg" variant="secondary" className="text-primary font-medium">
-              <Link to="/tools/eligibility-checker">Check Your Eligibility</Link>
+              <a href="/tools/eligibility-checker">Check Your Eligibility</a>
             </Button>
-            <Button asChild size="lg" variant="secondary" className="text-primary font-medium">
-              <Link to="/consultation">Book Consultation</Link>
+            <Button 
+              asChild 
+              size="lg" 
+              className="bg-portugal-blue text-white font-medium border border-white/20 hover:bg-portugal-blue/90"
+            >
+              <a href="/consultation">Book Consultation</a>
             </Button>
           </div>
           <div className="mt-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
