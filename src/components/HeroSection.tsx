@@ -23,12 +23,12 @@ const HeroSection = () => {
       <div className="container relative z-30 mx-auto px-4 py-24 md:py-32 lg:py-40">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-12 items-center">
           <div className="space-y-6 text-left md:col-span-4">
-            <a 
-              href="/visas" 
+            <Link 
+              to="/visas" 
               className="inline-block py-2 px-4 bg-white/30 backdrop-blur-md border border-white/40 rounded-full text-base font-semibold text-white shadow-lg hover:bg-white/40 transition-colors cursor-pointer"
             >
               Your Portugal Journey Starts Here
-            </a>
+            </Link>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
               Simplify Your Path to Portugal Residency
             </h1>
@@ -37,9 +37,9 @@ const HeroSection = () => {
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <Button asChild size="lg" className="bg-white text-portugal-blue hover:bg-white/90">
-                <a href="/tools/eligibility-checker">
+                <Link to="/tools/eligibility-checker">
                   Check Your Eligibility
-                </a>
+                </Link>
               </Button>
               <Button 
                 asChild 
@@ -47,10 +47,10 @@ const HeroSection = () => {
                 variant="outline" 
                 className="border-white bg-portugal-blue/90 text-white font-medium hover:bg-portugal-blue hover:text-white"
               >
-                <a href="/consultation" className="flex items-center">
+                <Link to="/consultation" className="flex items-center">
                   Book Consultation
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
+                </Link>
               </Button>
               <WhatsAppButton 
                 variant="outline" 
