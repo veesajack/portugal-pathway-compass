@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -16,6 +16,11 @@ import { useAuth } from "@/contexts/AuthContext";
 
 const MainNav = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+  };
 
   return (
     <NavigationMenu className="hidden md:flex">

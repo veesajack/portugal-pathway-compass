@@ -21,11 +21,16 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    setIsOpen(false);
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center">
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2" onClick={() => setIsOpen(false)}>
             <img src="/logo.svg" alt="MusasProsperas" className="h-8 w-8" />
             <span className="font-medium text-xl">MusasProsperas</span>
           </Link>
@@ -76,83 +81,100 @@ const Navbar = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px] pr-0">
               <nav className="flex flex-col gap-4 mt-8">
-                <Link to="/" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                <div 
+                  onClick={() => handleNavigation('/')} 
+                  className="px-2 py-1 text-lg font-medium cursor-pointer"
+                >
                   Home
-                </Link>
+                </div>
                 
                 {/* Visas Section Header with Link to Overview */}
-                <Link to="/visas" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                <div 
+                  onClick={() => handleNavigation('/visas')} 
+                  className="px-2 py-1 text-lg font-medium cursor-pointer"
+                >
                   All Visa Types
-                </Link>
+                </div>
                 
                 {/* Visas Mobile Menu - Expanded */}
                 <div className="border-l-2 border-muted pl-4 py-2 space-y-3">
-                  <Link to="/visas/d7" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  <div onClick={() => handleNavigation('/visas/d7')} className="block px-2 py-1 text-lg font-medium cursor-pointer">
                     D7 Visa
-                  </Link>
-                  <Link to="/visas/golden" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  </div>
+                  <div onClick={() => handleNavigation('/visas/golden')} className="block px-2 py-1 text-lg font-medium cursor-pointer">
                     Golden Visa
-                  </Link>
-                  <Link to="/visas/digital-nomad" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  </div>
+                  <div onClick={() => handleNavigation('/visas/digital-nomad')} className="block px-2 py-1 text-lg font-medium cursor-pointer">
                     Digital Nomad Visa
-                  </Link>
-                  <Link to="/visas/student" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  </div>
+                  <div onClick={() => handleNavigation('/visas/student')} className="block px-2 py-1 text-lg font-medium cursor-pointer">
                     Student Visa
-                  </Link>
-                  <Link to="/visas/work-permit" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  </div>
+                  <div onClick={() => handleNavigation('/visas/work-permit')} className="block px-2 py-1 text-lg font-medium cursor-pointer">
                     Work Permit
-                  </Link>
+                  </div>
                 </div>
                 
                 {/* Tools Header */}
-                <Link to="/tools/eligibility-checker" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                <div 
+                  onClick={() => handleNavigation('/tools/eligibility-checker')} 
+                  className="px-2 py-1 text-lg font-medium cursor-pointer"
+                >
                   Tools
-                </Link>
+                </div>
                 
                 {/* Tools Mobile Menu - Expanded */}
                 <div className="border-l-2 border-muted pl-4 py-2 space-y-3">
-                  <Link to="/tools/eligibility-checker" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  <div onClick={() => handleNavigation('/tools/eligibility-checker')} className="block px-2 py-1 text-lg font-medium cursor-pointer">
                     Visa Eligibility Checker
-                  </Link>
-                  <Link to="/tools/document-checklist" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  </div>
+                  <div onClick={() => handleNavigation('/tools/document-checklist')} className="block px-2 py-1 text-lg font-medium cursor-pointer">
                     Document Checklist
-                  </Link>
+                  </div>
                 </div>
 
                 {/* Resources Header */}
-                <Link to="/resources/guides" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                <div 
+                  onClick={() => handleNavigation('/resources/guides')} 
+                  className="px-2 py-1 text-lg font-medium cursor-pointer"
+                >
                   Resources
-                </Link>
+                </div>
                 
                 {/* Resources Mobile Menu - Expanded */}
                 <div className="border-l-2 border-muted pl-4 py-2 space-y-3">
-                  <Link to="/resources/guides" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  <div onClick={() => handleNavigation('/resources/guides')} className="block px-2 py-1 text-lg font-medium cursor-pointer">
                     Immigration Guides
-                  </Link>
-                  <Link to="/resources/faq" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  </div>
+                  <div onClick={() => handleNavigation('/resources/faq')} className="block px-2 py-1 text-lg font-medium cursor-pointer">
                     FAQ
-                  </Link>
+                  </div>
                 </div>
                 
-                <Link to="/consultation" className="px-2 py-1 text-lg font-medium bg-portugal-blue/10 text-portugal-blue font-semibold rounded" onClick={() => setIsOpen(false)}>
+                <div 
+                  onClick={() => handleNavigation('/consultation')} 
+                  className="px-2 py-1 text-lg font-medium bg-portugal-blue/10 text-portugal-blue font-semibold rounded cursor-pointer"
+                >
                   Book Consultation
-                </Link>
-                <Link to="/about" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                </div>
+                <div 
+                  onClick={() => handleNavigation('/about')} 
+                  className="px-2 py-1 text-lg font-medium cursor-pointer"
+                >
                   About
-                </Link>
+                </div>
                 
                 <div className="border-t my-4"></div>
                 
                 {user ? (
                   <>
-                    <Link
-                      to="/dashboard"
-                      className="px-2 py-1 text-lg font-medium flex items-center"
-                      onClick={() => setIsOpen(false)}
+                    <div
+                      onClick={() => handleNavigation('/dashboard')}
+                      className="px-2 py-1 text-lg font-medium flex items-center cursor-pointer"
                     >
                       <User size={18} className="mr-2" />
                       Dashboard
-                    </Link>
+                    </div>
                     <Button
                       variant="outline"
                       onClick={handleSignOut}
@@ -163,8 +185,11 @@ const Navbar = () => {
                     </Button>
                   </>
                 ) : (
-                  <Button asChild className="mt-2">
-                    <Link to="/login" onClick={() => setIsOpen(false)}>Login</Link>
+                  <Button 
+                    onClick={() => handleNavigation('/login')} 
+                    className="mt-2"
+                  >
+                    Login
                   </Button>
                 )}
               </nav>
