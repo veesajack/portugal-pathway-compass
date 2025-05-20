@@ -104,6 +104,11 @@ const Navbar = () => {
                   </Link>
                 </div>
                 
+                {/* Tools Header */}
+                <Link to="/tools/eligibility-checker" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  Tools
+                </Link>
+                
                 {/* Tools Mobile Menu - Expanded */}
                 <div className="border-l-2 border-muted pl-4 py-2 space-y-3">
                   <Link to="/tools/eligibility-checker" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
@@ -114,6 +119,11 @@ const Navbar = () => {
                   </Link>
                 </div>
 
+                {/* Resources Header */}
+                <Link to="/resources/guides" className="px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
+                  Resources
+                </Link>
+                
                 {/* Resources Mobile Menu - Expanded */}
                 <div className="border-l-2 border-muted pl-4 py-2 space-y-3">
                   <Link to="/resources/guides" className="block px-2 py-1 text-lg font-medium" onClick={() => setIsOpen(false)}>
@@ -153,8 +163,8 @@ const Navbar = () => {
                     </Button>
                   </>
                 ) : (
-                  <Button asChild className="mt-2" onClick={() => setIsOpen(false)}>
-                    <Link to="/login">Login</Link>
+                  <Button asChild className="mt-2">
+                    <Link to="/login" onClick={() => setIsOpen(false)}>Login</Link>
                   </Button>
                 )}
               </nav>
